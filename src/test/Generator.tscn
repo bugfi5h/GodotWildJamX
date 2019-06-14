@@ -26,6 +26,13 @@ margin_right = 200.286
 margin_bottom = 228.273
 text = "Size Y"
 
+[node name="Label4" type="Label" parent="."]
+margin_left = 113.286
+margin_top = 316.273
+margin_right = 201.286
+margin_bottom = 330.273
+text = "Secret Rooms"
+
 [node name="SizeXEdit" type="TextEdit" parent="."]
 margin_left = 222.0
 margin_top = 141.0
@@ -47,11 +54,18 @@ margin_right = 726.501
 margin_bottom = 291.803
 text = "15"
 
+[node name="SecretRoomCountEdit" type="TextEdit" parent="."]
+margin_left = 218.501
+margin_top = 303.803
+margin_right = 726.501
+margin_bottom = 343.803
+text = "3"
+
 [node name="Button" type="Button" parent="."]
-margin_left = 331.258
-margin_top = 336.073
-margin_right = 602.258
-margin_bottom = 356.073
+margin_left = 335.258
+margin_top = 367.073
+margin_right = 606.258
+margin_bottom = 387.073
 text = "Generate"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
