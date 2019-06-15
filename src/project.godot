@@ -16,7 +16,17 @@ _global_script_class_icons={
 [application]
 
 config/name="WallsAreItchy"
+run/main_scene="res://ui/MainMenue.tscn"
 config/icon="res://assets/icon.png"
+
+[autoload]
+
+SceneLoader="*res://globals/SceneLoader.tscn"
+
+[display]
+
+window/size/width=640
+window/size/height=480
 
 [rendering]
 
