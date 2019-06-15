@@ -69,7 +69,7 @@ func _create_rooms(grid : Array) -> void:
 		print("ERROR: no rooms") #TODO
 	
 func _select_room_to_place(posX: int, posY: int, all_weights : int, room_list : Array):
-	var weight = randi() % all_weights	#Zufallszahl von 0 - Summe aller Gewichtungen
+	var weight = randi() % all_weights + 1	#Zufallszahl von 1 - Summe aller Gewichtungen
 	for room in room_list:
 		weight -= room.weight	#Ziehe die Gewichtung des Raums ab
 		if weight <= 0 :		#Ist das Resultat <= 0 haben wir einen Gewinner

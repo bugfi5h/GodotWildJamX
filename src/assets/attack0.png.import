@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glitch1.png-ae6fb3f085234fcd0ef81fa11fa7faed.stex"
+path="res://.import/attack0.png-2ab1fdb14d50d902b45007b960d3a1a8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/glitch1.png"
-dest_files=[ "res://.import/glitch1.png-ae6fb3f085234fcd0ef81fa11fa7faed.stex" ]
+source_file="res://assets/attack0.png"
+dest_files=[ "res://.import/attack0.png-2ab1fdb14d50d902b45007b960d3a1a8.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
