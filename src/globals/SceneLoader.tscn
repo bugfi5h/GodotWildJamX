@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://globals/SceneLoader.gd" type="Script" id=1]
 [ext_resource path="res://assets/glitch1.png" type="Texture" id=2]
 [ext_resource path="res://assets/glitch2.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "fadeAway"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -19,8 +19,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "loading"
+[sub_resource type="Animation" id=2]
 loop = true
 step = 0.5
 tracks/0/type = "value"
@@ -36,8 +35,10 @@ tracks/0/keys = {
 "values": [ ExtResource( 2 ), ExtResource( 3 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.243137, 0.380392, 0.164706, 1 )
+
 [node name="SceneLoader" type="Control"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -48,8 +49,8 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fadeAway = SubResource( 2 )
-anims/loading = SubResource( 1 )
+anims/fadeAway = SubResource( 1 )
+anims/loading = SubResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 0.5
@@ -79,4 +80,5 @@ margin_top = 84.0
 margin_right = 160.0
 margin_bottom = 98.0
 size_flags_vertical = 1
+custom_styles/fg = SubResource( 3 )
 

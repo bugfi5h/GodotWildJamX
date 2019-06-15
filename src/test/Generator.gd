@@ -34,22 +34,22 @@ func _init_grid() -> void:
 		m_size_x = MIN_SIZE_X
 	if m_size_x > MAX_SIZE_X:
 		m_size_x = MAX_SIZE_X
-	$SizeXEdit.text = String(m_size_x)
+	#$SizeXEdit.text = String(m_size_x)
 	if m_size_y < MIN_SIZE_Y:
 		m_size_y = MIN_SIZE_Y
 	if m_size_y > MAX_SIZE_Y:
 		m_size_y = MAX_SIZE_Y
-	$SizeYEdit.text = String(m_size_y)
+	#$SizeYEdit.text = String(m_size_y)
 	for x in range(m_size_x):
 		m_grid.append([])
 		for y in range(m_size_y):
 			m_grid[x].append(Room_Type.NONE)
 	if m_secret_room_count > MAX_SECRET_ROOMS:
 		m_secret_room_count = MAX_SECRET_ROOMS	
-		$SecretRoomCountEdit.text = String(m_secret_room_count)
+		#$SecretRoomCountEdit.text = String(m_secret_room_count)
 	if MAX_ROOMS < m_room_count:
 		m_room_count = MAX_ROOMS
-		$RoomCountEdit.text = String(m_room_count)
+		#$RoomCountEdit.text = String(m_room_count)
 		
 func _print_grid() -> void:
 	print("---------------------------------------")
@@ -141,6 +141,21 @@ func _place_start() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func start_generation(size_x : int, size_y : int, room_count : int, secret_room_count : int) -> Array:
+	var grid = null
+	if !m_generation_running:
+		m_generation_running = true
+		m_size_x = size_x
+		m_size_y = size_y
+		m_room_count = room_count
+		m_secret_room_count = secret_room_count
+		_init_grid()
+		_generate_levels()
+		grid = m_grid
+		m_generation_running = false
+	return grid
+	
 
 
 func _on_Button_pressed() -> void:

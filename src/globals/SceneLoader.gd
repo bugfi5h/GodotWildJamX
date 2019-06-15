@@ -6,8 +6,9 @@ var time_max = 100 # msec
 var current_scene
 
 func _ready():
-    var root = get_tree().get_root()
-    current_scene = root.get_child(root.get_child_count() -1)
+	self.modulate = Color(1,1,1,0)
+	var root = get_tree().get_root()
+	current_scene = root.get_child(root.get_child_count() -1)
 
 func goto_scene(path): # game requests to switch to this scene
 	loader = ResourceLoader.load_interactive(path)
@@ -18,8 +19,9 @@ func goto_scene(path): # game requests to switch to this scene
 	current_scene.queue_free() # get rid of the old scene
 	# start your "loading..." animation
 	self.modulate = Color(1,1,1,1)
+	$MarginContainer/VBoxContainer/ProgressBar.value = $MarginContainer/VBoxContainer/ProgressBar.min_value
 	$AnimationPlayer.play("loading")
-	wait_frames = 60
+	wait_frames = 60 # kann man runterstellen. Ist aktuell zum testen drin.
 
 func show_error() -> void:
 	print("Error while loading scene") # todo
@@ -44,9 +46,6 @@ func _process(time):
 			var resource = loader.get_resource()
 			loader = null
 			$MarginContainer/VBoxContainer/ProgressBar.value = $MarginContainer/VBoxContainer/ProgressBar.max_value
-			#TODOD Hier fehlt wahrscheinlich noch das generieren.
-			$AnimationPlayer.stop()
-			$AnimationPlayer.play("fadeAway")
 			set_new_scene(resource)
 			#self.visible = false
 			break
@@ -63,5 +62,26 @@ func update_progress():
     $MarginContainer/VBoxContainer/ProgressBar.value = progress
 
 func set_new_scene(scene_resource):
-    current_scene = scene_resource.instance()
-    get_node("/root").add_child(current_scene)
+	current_scene = scene_resource.instance()
+	var has_init_func : bool= current_scene.has_method("initialize_level")
+	var has_progress_signal : bool = current_scene.get_script().has_script_signal("level_loading_progress_changed")
+	
+	if has_init_func and has_progress_signal:
+		current_scene.connect("level_loading_progress_changed", self, "_on_loading_progress_changed")
+		current_scene.initialize_level()
+	else:
+		fade_out_and_and_to_root()
+		
+func _on_loading_progress_changed(progress):
+	$MarginContainer/VBoxContainer/ProgressBar.value = progress
+	if progress == 100:
+		current_scene.disconnect("level_loading_progress_changed", self, "_on_loading_progress_changed")
+		fade_out_and_and_to_root()
+		
+func fade_out_and_and_to_root():
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("fadeAway")
+	get_node("/root").add_child(current_scene)
+		
+		
+		
