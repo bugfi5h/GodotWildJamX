@@ -14,9 +14,9 @@ func _ready():
 
 
 
-func _on_ExitBtn_pressed():
+func _on_BtnQuit_pressed():
 	get_tree().quit()
 
 
-func _on_PlayBtn_pressed():
+func _on_BtnPlay_pressed():
 	SceneLoader.goto_scene("res://map/MainMap.tscn")
