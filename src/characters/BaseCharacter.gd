@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 export var m_current_health : int = 6
 export var m_max_health : int = 6
