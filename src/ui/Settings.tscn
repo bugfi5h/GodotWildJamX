@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ui/Settings.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/BackgroundSettings.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/buttons/ButtonBack.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/buttons/ButtonBackPressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/buttons/ButtonMusicActive.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/buttons/ButtonMusicInactive.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/ui/buttons/ButtonSoundActive.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/buttons/ButtonSoundInactive.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ui/VolumeBar.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/ui/VolumeBarVolume.png" type="Texture" id=10]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="BackgroundSettings" type="Sprite" parent="."]
+position = Vector2( 0, 0.693054 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BtnBack" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+
+[node name="BtnMusic" type="TextureButton" parent="."]
+margin_top = 230.0
+margin_right = 710.0
+margin_bottom = 671.0
+rect_scale = Vector2( 0.7, 0.7 )
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="BtnSound" type="TextureButton" parent="."]
+margin_left = -1.74579
+margin_top = 574.746
+margin_right = 701.254
+margin_bottom = 943.746
+rect_scale = Vector2( 0.7, 0.7 )
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+margin_top = 3.0
+margin_right = 40.0
+margin_bottom = 43.0
+rect_scale = Vector2( 0.7, 0.7 )
+
+[node name="MusicBar" type="Sprite" parent="."]
+position = Vector2( 956.689, 366.614 )
+z_index = 2
+texture = ExtResource( 9 )
+
+[node name="Volume" type="TextureProgress" parent="MusicBar"]
+show_behind_parent = true
+margin_left = -423.918
+margin_top = -161.269
+margin_right = 431.082
+margin_bottom = 161.731
+value = 100.0
+texture_progress = ExtResource( 10 )
+
+[node name="SoundBar" type="Sprite" parent="."]
+position = Vector2( 956.689, 686.614 )
+z_index = 2
+texture = ExtResource( 9 )
+
+[node name="Volume" type="TextureProgress" parent="SoundBar"]
+show_behind_parent = true
+margin_left = -423.918
+margin_top = -159.932
+margin_right = 431.082
+margin_bottom = 163.068
+value = 100.0
+texture_progress = ExtResource( 10 )
+[connection signal="pressed" from="BtnBack" to="." method="_on_BtnBack_pressed"]

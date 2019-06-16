@@ -13,15 +13,6 @@ func _ready():
 #	pass
 
 
-
-func _on_BtnQuit_pressed():
-	get_tree().quit()
-
-
-func _on_BtnPlay_pressed():
-	SceneLoader.goto_scene("res://map/MainMap.tscn")
-
-
-func _on_BtnSettings_pressed():
-	SceneLoader.goto_scene("res://ui/Settings.tscn")
+func _on_BtnBack_pressed():
+	SceneLoader.goto_scene("res://ui/MainMenue.tscn")
 	pass # Replace with function body.

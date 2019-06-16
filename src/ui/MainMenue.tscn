@@ -46,9 +46,6 @@ margin_bottom = 745.962
 rect_scale = Vector2( 0.7, 0.7 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="BtnCredits" type="TextureButton" parent="."]
 margin_left = 1571.82
@@ -71,4 +68,5 @@ __meta__ = {
 "_edit_lock_": true
 }
 [connection signal="pressed" from="BtnPlay" to="." method="_on_BtnPlay_pressed"]
+[connection signal="pressed" from="BtnSettings" to="." method="_on_BtnSettings_pressed"]
 [connection signal="pressed" from="BtnQuit" to="." method="_on_BtnQuit_pressed"]
