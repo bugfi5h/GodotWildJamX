@@ -23,5 +23,5 @@ func _on_BtnPlay_pressed():
 
 
 func _on_BtnSettings_pressed():
-	SceneLoader.goto_scene("res://ui/Settings.tscn")
+	SceneLoader.goto_menu_scene("res://ui/Settings.tscn")
 	pass # Replace with function body.
