@@ -73,6 +73,4 @@ collision_mask = 5
 position = Vector2( 0.135271, 0 )
 shape = SubResource( 4 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
-current = true
 [connection signal="area_entered" from="Sprite/PunchHit" to="." method="_on_PunchHit_area_entered"]

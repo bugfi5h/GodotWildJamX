@@ -1,8 +1,7 @@
 extends Node2D
 
 
-const ROOM_WIDTH : float = 300.0  # TODO VALUES
-const ROOM_HEIGHT : float = 200.0 # TODO VALUES
+var m_room_dimensions : Vector2 = Vector2()
 
 enum loading_states {
 	START = 0,
@@ -31,6 +30,7 @@ signal level_loading_progress_changed(loading_progress)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	m_room_dimensions = get_viewport().get_visible_rect().size * $MapCamera.zoom
 
 func initialize_level() -> void:
 	emit_signal("level_loading_progress_changed",loading_states.START)
@@ -58,11 +58,11 @@ func _create_rooms(grid : Array) -> void:
 				for y in grid[x]:
 					match grid[x][y]:
 						m_generator.Room_Type.START:
-							_place_room(x*ROOM_WIDTH, y*ROOM_HEIGHT, m_starting_room)
+							_place_room(x*m_room_dimensions.x, y*m_room_dimensions.y, m_starting_room)
 						m_generator.Room_Type.NORMAL:
-							_select_room_to_place(x*ROOM_WIDTH, y*ROOM_HEIGHT, all_normal_weights, m_room_scenes)
+							_select_room_to_place(x*m_room_dimensions.x, y*m_room_dimensions.y, all_normal_weights, m_room_scenes)
 						m_generator.Room_Type.SECRET:
-							_select_room_to_place(x*ROOM_WIDTH, y*ROOM_HEIGHT, all_secret_weights, m_secret_room_scenes)
+							_select_room_to_place(x*m_room_dimensions.x, y*m_room_dimensions.y, all_secret_weights, m_secret_room_scenes)
 		else:
 			print("ERROR: Gewichtungen sind 0") # TODO
 	else:
@@ -78,8 +78,8 @@ func _select_room_to_place(posX: int, posY: int, all_weights : int, room_list : 
 
 func _place_room(posX : float, posY: float, sceneType : PackedScene) -> void:
 	var room = sceneType.instance()
-	room.global_position.x = posX
-	room.global_position.y = posY
+	room.position.x = posX
+	room.position.y = posY
 	add_child(room)
 	
 
