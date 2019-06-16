@@ -4,6 +4,9 @@ var m_velocity : Vector2
 export var m_damage : int = 1
 export var m_speed : int = 150
 
+func _ready():
+	add_to_group("player")
+
 func _physics_process(delta) -> void:
 	m_velocity = Vector2()
 	var direction = Vector2()

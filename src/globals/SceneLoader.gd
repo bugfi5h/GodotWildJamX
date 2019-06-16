@@ -21,7 +21,7 @@ func goto_scene(path): # game requests to switch to this scene
 	self.modulate = Color(1,1,1,1)
 	$MarginContainer/VBoxContainer/ProgressBar.value = $MarginContainer/VBoxContainer/ProgressBar.min_value
 	$AnimationPlayer.play("loading")
-	wait_frames = 60 # kann man runterstellen. Ist aktuell zum testen drin.
+	wait_frames = 1 # kann man runterstellen. Ist aktuell zum testen drin.
 
 func show_error() -> void:
 	print("Error while loading scene") # todo

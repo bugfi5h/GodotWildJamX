@@ -67,6 +67,7 @@ texture_pressed = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
+
 [connection signal="pressed" from="BtnPlay" to="." method="_on_BtnPlay_pressed"]
 [connection signal="pressed" from="BtnSettings" to="." method="_on_BtnSettings_pressed"]
 [connection signal="pressed" from="BtnQuit" to="." method="_on_BtnQuit_pressed"]
