@@ -24,4 +24,5 @@ drag_margin_v_enabled = false
 smoothing_enabled = true
 smoothing_speed = 20.0
 script = ExtResource( 3 )
+debug = true
 

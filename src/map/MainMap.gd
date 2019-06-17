@@ -18,7 +18,6 @@ var m_starting_room : PackedScene = preload("res://map/rooms/StartRoom.tscn")
 var m_starting_room_pos : Vector2 = Vector2()
 var m_player : PackedScene = preload("res://characters/PlayerCharacter.tscn")
 
-
 var m_room_scenes : Array = [
 	# hier neue Räume reinpacken: { scene: <path_to_scene>, weight: 5 }
 	{ "scene": load("res://map/rooms/TestRoom1.tscn"), "weight": 4 },
@@ -116,7 +115,7 @@ func _get_neighbours(x : int, y : int) -> Dictionary:
 			neighbours[Helper.direction.RIGHT] = m_room_grid[x+1][y]
 	if (y + 1) < m_room_grid[0].size():
 		if m_room_grid[x][y+1] != null:
-			neighbours[Helper.direction.BOTTOM] = m_room_grid[x][y+1]	
+			neighbours[Helper.direction.BOTTOM] = m_room_grid[x][y+1]
 	return neighbours
 
 func _add_doors() -> void:
@@ -125,11 +124,11 @@ func _add_doors() -> void:
 			var room = m_room_grid[x][y]
 			if room != null:
 				room.set_doors(_get_neighbours(x,y))
-	for x in range(m_room_grid.size()):
-		for y in range(m_room_grid[x].size()):
-			var room = m_room_grid[x][y]
-			if room != null:
-				room.remove_random_doors()
+	#for x in range(m_room_grid.size()):
+	#	for y in range(m_room_grid[x].size()):
+	#		var room = m_room_grid[x][y]
+	#		if room != null:
+	#			room.remove_random_doors()
 	for x in range(m_room_grid.size()):
 		for y in range(m_room_grid[x].size()):
 			var room = m_room_grid[x][y]

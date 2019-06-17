@@ -20,19 +20,15 @@ func set_doors(neighbours : Dictionary) -> void:
 	m_neighbours = neighbours
 	door_count = 0
 	if m_neighbours[Helper.direction.LEFT] != null:
-		if m_neighbours[Helper.direction.LEFT].has_door_right: #Wenn Links scon eine Tür zu diesem Raum hat, sollte es auch eine hier geben
 			has_door_left = true
 			door_count +=1
 	if m_neighbours[Helper.direction.RIGHT] != null:
-		if m_neighbours[Helper.direction.RIGHT].has_door_left: #Wenn Links scon eine Tür zu diesem Raum hat, sollte es auch eine hier geben
 			has_door_right = true
 			door_count +=1
 	if m_neighbours[Helper.direction.TOP] != null:
-		if m_neighbours[Helper.direction.TOP].has_door_bottom: #Wenn Links scon eine Tür zu diesem Raum hat, sollte es auch eine hier geben
 			has_door_top = true
 			door_count +=1
 	if m_neighbours[Helper.direction.BOTTOM] != null:
-		if m_neighbours[Helper.direction.BOTTOM].has_door_top: #Wenn Links scon eine Tür zu diesem Raum hat, sollte es auch eine hier geben
 			has_door_bottom = true
 			door_count +=1
 
@@ -66,9 +62,9 @@ func _get_opposite_key(key : int) -> int:
 	return opposite_key
 			
 func update_doors() -> void:
-	$DoorBottom.visible = has_door_bottom
+	$DoorTop.visible = has_door_top
 	$DoorLeft.visible = has_door_left
-	$DoorTop.visible = has_door_right
+	$DoorRight.visible = has_door_right
 	$DoorBottom.visible = has_door_bottom
 
 func remove_door_at_key(key : int):
