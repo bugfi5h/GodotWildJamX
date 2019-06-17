@@ -125,11 +125,11 @@ func _add_doors() -> void:
 			var room = m_room_grid[x][y]
 			if room != null:
 				room.set_doors(_get_neighbours(x,y))
-	#for x in range(m_room_grid.size()):
-	#	for y in range(m_room_grid[x].size()):
-	#		var room = m_room_grid[x][y]
-	#		if room != null:
-	#			room.remove_random_doors()
+	for x in range(m_room_grid.size()):
+		for y in range(m_room_grid[x].size()):
+			var room = m_room_grid[x][y]
+			if room != null:
+				room.remove_random_doors()
 	for x in range(m_room_grid.size()):
 		for y in range(m_room_grid[x].size()):
 			var room = m_room_grid[x][y]
