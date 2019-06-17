@@ -22,10 +22,7 @@ func die() -> void:
 	queue_free()
 		
 func change_glitch_meter(change:int) -> void:
-	if change <=0:
-		current_glitch_meter += max(0, change)
-	else:
-		current_glitch_meter += min(change, max_glitch_meter)
+	current_glitch_meter = Helper.limit(0, max_glitch_meter, change + current_glitch_meter)
 		
 func has_enough_glitch_meter(needed_meter : int) -> bool:
 	return current_glitch_meter - needed_meter >= 0
@@ -33,6 +30,10 @@ func has_enough_glitch_meter(needed_meter : int) -> bool:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+	
+func collect_glorb(glorb : Glorb) -> bool:
+	change_glitch_meter(glorb.glitch_amount)
+	return true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
