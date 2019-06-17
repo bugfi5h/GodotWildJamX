@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="TestChamber" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2( 0.25, 0.25 )
+

@@ -66,8 +66,10 @@ func _get_opposite_key(key : int) -> int:
 	return opposite_key
 			
 func update_doors() -> void:
-	#update tileset with flags from above
-	pass
+	$DoorBottom.visible = has_door_bottom
+	$DoorLeft.visible = has_door_left
+	$DoorTop.visible = has_door_right
+	$DoorBottom.visible = has_door_bottom
 
 func remove_door_at_key(key : int):
 	if m_neighbours[key] != null:
