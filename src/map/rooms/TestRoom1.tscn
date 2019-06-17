@@ -7,3 +7,6 @@
 [node name="ColorRect" parent="." index="0"]
 color = Color( 1, 0, 0, 1 )
 
+[node name="Deco" parent="." index="7"]
+tile_set = null
+
