@@ -1,10 +1,8 @@
 extends "res://characters/BaseCharacter.gd"
 
 var m_velocity : Vector2
-export var m_damage : int = 1
-export var m_speed : int = 150
 
-func _ready():
+func _ready() -> void:
 	add_to_group("player")
 
 func _physics_process(delta) -> void:
@@ -24,11 +22,9 @@ func _physics_process(delta) -> void:
 	if Input.is_action_pressed("attack"):
 		$AnimationPlayer.play("attack")
 		direction = Vector2() # Keine Bewegung beim Angriff. Könnte noch angepasst werden je nach Animation
-	
-	m_velocity = direction.normalized()*m_speed
+	m_velocity = direction.normalized()*speed
 	move_and_slide(m_velocity)
 
-func _on_PunchHit_area_entered(area):
-	print("hit")
+func _on_PunchHit_area_entered(area) -> void:
 	if area.is_in_group("hitbox"):
-		area.take_damage(m_damage)
+		area.take_damage(damage)

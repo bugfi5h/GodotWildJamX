@@ -2,29 +2,22 @@ extends Camera2D
 
 var m_grid_position :Vector2 = Vector2()
 
-onready var parent : Node2D = get_parent()
+onready var m_parent : Node2D = get_parent()
 
-func _ready():
+func _ready() -> void:
 	update_grid_position()
 	
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	update_grid_position()
 
-func get_player() -> Node2D:
-	var player = null
-	var players = get_tree().get_nodes_in_group("player")
-	if players.size() > 0:
-		player = players[0]
-	return player
-
-func update_grid_position():
-	var player = get_player()
-	if player != null && parent.m_room_dimensions != Vector2():
-		var x = int(player.position.x / parent.m_room_dimensions.x)
-		var y = int(player.position.y / parent.m_room_dimensions.y)
+func update_grid_position() -> void:
+	var player = Helper.get_player()
+	if player != null && m_parent.m_room_dimensions != Vector2():
+		var x = int(player.position.x / m_parent.m_room_dimensions.x)
+		var y = int(player.position.y / m_parent.m_room_dimensions.y)
 		var new_grid_position = Vector2(x,y)
 		if m_grid_position != new_grid_position:
 			m_grid_position = new_grid_position
-			position = m_grid_position * parent.m_room_dimensions
+			position = m_grid_position * m_parent.m_room_dimensions
 		

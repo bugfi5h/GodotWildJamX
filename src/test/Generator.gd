@@ -102,7 +102,7 @@ func _place_secret_rooms() -> void:
 			break;
 
 
-func _add_room(pos : Vector2, type : int):
+func _add_room(pos : Vector2, type : int) -> void:
 	m_grid[pos.x][pos.y] = type
 	m_placed_rooms.append(pos)
 	

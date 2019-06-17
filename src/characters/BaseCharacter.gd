@@ -1,31 +1,34 @@
 extends KinematicBody2D
 
-export var m_current_health : int = 6
-export var m_max_health : int = 6
-export var m_current_glitch_meter : int = 100
-export var m_max_glitch_meter : int = 100
-export var m_wall_glitch_cost : int = 50
+export var current_health : int = 6
+export var max_health : int = 6
+export var current_glitch_meter : int = 100
+export var max_glitch_meter : int = 100
+export var wall_glitch_cost : int = 50
+
+export var damage : int = 1
+export var speed : int = 150
 
 func change_health(change:int) -> void:
 	if change <= 0:
-		m_current_health += max(0, change)
+		current_health += max(0, change)
 	else:
-		m_current_health += min(change, m_max_health)
-	if m_current_health == 0:
+		current_health += min(change, max_health)
+	if current_health == 0:
 		die()
 		
-func die():
+func die() -> void:
 	#Überschriebene Funktionen hätten hier Sterbeanimationen oder GameOver Screens
 	queue_free()
 		
 func change_glitch_meter(change:int) -> void:
 	if change <=0:
-		m_current_glitch_meter += max(0, change)
+		current_glitch_meter += max(0, change)
 	else:
-		m_current_glitch_meter += min(change, m_max_glitch_meter)
+		current_glitch_meter += min(change, max_glitch_meter)
 		
 func has_enough_glitch_meter(needed_meter : int) -> bool:
-	return m_current_glitch_meter - needed_meter >= 0
+	return current_glitch_meter - needed_meter >= 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

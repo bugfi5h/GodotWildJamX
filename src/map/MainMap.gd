@@ -31,10 +31,6 @@ var m_secret_room_scenes : Array = [
 
 
 signal level_loading_progress_changed(loading_progress)
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 	
 
 func initialize_level(display_size : Vector2) -> void:
@@ -76,7 +72,7 @@ func _create_rooms(grid : Array) -> void:
 	else:
 		print("ERROR: no rooms") #TODO
 	
-func _select_room_to_place(posX: int, posY: int, all_weights : int, room_list : Array):
+func _select_room_to_place(posX: int, posY: int, all_weights : int, room_list : Array) -> void:
 	var weight = randi() % all_weights + 1	#Zufallszahl von 1 - Summe aller Gewichtungen
 	for room in room_list:
 		weight -= room.weight	#Ziehe die Gewichtung des Raums ab
