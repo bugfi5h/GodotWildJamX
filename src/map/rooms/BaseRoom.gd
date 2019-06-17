@@ -1,4 +1,5 @@
 extends Node2D
+class_name BaseRoom
 
 export var has_door_left : bool = false
 export var has_door_right : bool = false

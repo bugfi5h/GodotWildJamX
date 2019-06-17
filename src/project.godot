@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BaseRoom",
+"language": "GDScript",
+"path": "res://map/rooms/BaseRoom.gd"
+}, {
 "base": "Area2D",
 "class": "Glorb",
 "language": "GDScript",
 "path": "res://items/glorbs/Glorb.gd"
 } ]
 _global_script_class_icons={
+"BaseRoom": "",
 "Glorb": ""
 }
 
