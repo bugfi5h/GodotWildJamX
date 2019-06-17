@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://ui/Settings.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/BackgroundSettings.png" type="Texture" id=2]
@@ -10,6 +10,22 @@
 [ext_resource path="res://assets/images/ui/VolumeBarVolume.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/ui/buttons/ButtonSoundActive.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/ui/buttons/ButtonSoundInactive.png" type="Texture" id=10]
+
+[sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="ImageTexture" id=3]
+
+[sub_resource type="ImageTexture" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
@@ -31,7 +47,7 @@ margin_bottom = 270.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BtnBack2" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+[node name="BtnBack" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 margin_right = 480.0
 margin_bottom = 63.0
 rect_min_size = Vector2( 77, 63 )
@@ -45,7 +61,7 @@ margin_top = 67.0
 margin_right = 480.0
 margin_bottom = 147.0
 
-[node name="BtnMusic2" type="TextureButton" parent="MarginContainer/VBoxContainer/Musik"]
+[node name="BtnMusic" type="TextureButton" parent="MarginContainer/VBoxContainer/Musik"]
 margin_right = 177.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 177, 80 )
@@ -69,12 +85,28 @@ value = 100.0
 texture_progress = ExtResource( 8 )
 nine_patch_stretch = true
 
+[node name="MusikSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Musik/NinePatchRect/Volume"]
+margin_right = 213.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 213, 80 )
+size_flags_vertical = 1
+custom_icons/grabber_disabled = SubResource( 2 )
+custom_icons/grabber_highlight = SubResource( 3 )
+custom_icons/grabber = SubResource( 1 )
+custom_styles/slider = SubResource( 4 )
+custom_styles/grabber_disabled = SubResource( 5 )
+custom_styles/grabber_highlight = SubResource( 6 )
+custom_styles/grabber_area = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+scrollable = false
+ticks_on_borders = true
+
 [node name="Sound" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 151.0
 margin_right = 480.0
 margin_bottom = 231.0
 
-[node name="BtnSound2" type="TextureButton" parent="MarginContainer/VBoxContainer/Sound"]
+[node name="BtnSound" type="TextureButton" parent="MarginContainer/VBoxContainer/Sound"]
 margin_right = 175.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 175, 70 )
@@ -85,18 +117,38 @@ texture_pressed = ExtResource( 10 )
 expand = true
 stretch_mode = 4
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Sound"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Sound"]
 margin_left = 179.0
 margin_right = 392.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 213, 80 )
 texture = ExtResource( 7 )
 
-[node name="Volume" type="TextureProgress" parent="MarginContainer/VBoxContainer/Sound/NinePatchRect2"]
+[node name="Volume" type="TextureProgress" parent="MarginContainer/VBoxContainer/Sound/NinePatchRect"]
 show_behind_parent = true
 rect_min_size = Vector2( 213, 80 )
 value = 100.0
 texture_progress = ExtResource( 8 )
 nine_patch_stretch = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnBack2" to="." method="_on_BtnBack_pressed"]
+[node name="SoundSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Sound/NinePatchRect/Volume"]
+margin_right = 213.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 213, 80 )
+size_flags_vertical = 1
+custom_icons/grabber_disabled = SubResource( 2 )
+custom_icons/grabber_highlight = SubResource( 3 )
+custom_icons/grabber = SubResource( 1 )
+custom_styles/slider = SubResource( 4 )
+custom_styles/grabber_disabled = SubResource( 5 )
+custom_styles/grabber_highlight = SubResource( 6 )
+custom_styles/grabber_area = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+scrollable = false
+ticks_on_borders = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnBack" to="." method="_on_BtnBack_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Musik/BtnMusic" to="." method="_on_BtnMusic_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Musik/NinePatchRect/Volume/MusikSlider" to="." method="_on_MusikSlider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Sound/BtnSound" to="." method="_on_BtnSound_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Sound/NinePatchRect/Volume/SoundSlider" to="." method="_on_SoundSlider_value_changed"]

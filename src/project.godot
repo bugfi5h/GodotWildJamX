@@ -34,6 +34,7 @@ config/icon="res://assets/icon.png"
 
 SceneLoader="*res://globals/SceneLoader.tscn"
 Helper="*res://globals/Helper.gd"
+GameSettins="*res://globals/GameSettins.gd"
 
 [display]
 
