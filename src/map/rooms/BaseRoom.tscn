@@ -50,5 +50,6 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 
 
 [node name="Deco" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
 format = 1
 
