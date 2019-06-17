@@ -18,7 +18,6 @@ margin_bottom = 1.36035
 [node name="MapCamera" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
-zoom = Vector2( 0.25, 0.25 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 smoothing_enabled = true
