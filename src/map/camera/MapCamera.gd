@@ -21,7 +21,6 @@ func get_player() -> Node2D:
 func update_grid_position():
 	var player = get_player()
 	if player != null && parent.m_room_dimensions != Vector2():
-		print(player.position)
 		var x = int(player.position.x / parent.m_room_dimensions.x)
 		var y = int(player.position.y / parent.m_room_dimensions.y)
 		var new_grid_position = Vector2(x,y)

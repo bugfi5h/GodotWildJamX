@@ -24,10 +24,11 @@ enum Room_Type {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	randomize()
+	pass
 	
 
 func _init_grid() -> void:
+	randomize()
 	m_grid = []
 	m_placed_rooms = []
 	if m_size_x < MIN_SIZE_X:

@@ -14,14 +14,19 @@ enum loading_states {
 var m_generator : Node2D = preload("res://test/Generator.gd").new()
 
 var m_starting_room : PackedScene = preload("res://map/rooms/StartRoom.tscn")
+var m_starting_room_pos : Vector2 = Vector2()
+var m_player : PackedScene = preload("res://characters/PlayerCharacter.tscn")
+
 
 var m_room_scenes : Array = [
-	# hier neue Räume reinpacken: { scene: preload(<path_to_scene>), weight: 5 }
+	# hier neue Räume reinpacken: { scene: <path_to_scene>, weight: 5 }
+	{ "scene": load("res://map/rooms/TestRoom1.tscn"), "weight": 4 },
+	{ "scene": load("res://map/rooms/TestRoom2.tscn"), "weight": 2 }
 ]
 
 
 var m_secret_room_scenes : Array = [
-	# hier neue Räume reinpacken: { scene: preload(<path_to_scene>), weight: 5 }
+	{ "scene": load("res://map/rooms/TestRoom3.tscn"), "weight": 2 }
 ]
 
 
@@ -29,10 +34,12 @@ signal level_loading_progress_changed(loading_progress)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize()
-	m_room_dimensions = get_viewport().get_visible_rect().size * $MapCamera.zoom
+	pass
+	
 
-func initialize_level() -> void:
+func initialize_level(display_size : Vector2) -> void:
+	randomize()
+	m_room_dimensions = display_size * $MapCamera.zoom
 	emit_signal("level_loading_progress_changed",loading_states.START)
 	var grid = m_generator.start_generation(10,10,20,5) # TODO VALUES
 	emit_signal("level_loading_progress_changed",loading_states.GRID_LOADED)
@@ -54,11 +61,12 @@ func _create_rooms(grid : Array) -> void:
 			all_secret_weights += s_room.weight
 		if (all_normal_weights > 0 and all_secret_weights > 0) :
 			#Iterieren über das Grid:
-			for x in grid:
-				for y in grid[x]:
+			for x in range(grid.size()):
+				for y in range(grid[x].size()):
 					match grid[x][y]:
 						m_generator.Room_Type.START:
-							_place_room(x*m_room_dimensions.x, y*m_room_dimensions.y, m_starting_room)
+							m_starting_room_pos = Vector2(x*m_room_dimensions.x,y*m_room_dimensions.y)
+							_place_room(m_starting_room_pos.x, m_starting_room_pos.y, m_starting_room)
 						m_generator.Room_Type.NORMAL:
 							_select_room_to_place(x*m_room_dimensions.x, y*m_room_dimensions.y, all_normal_weights, m_room_scenes)
 						m_generator.Room_Type.SECRET:
@@ -87,7 +95,10 @@ func _set_doors() -> void:
 	pass
 
 func _spawn_player_and_mobs() -> void:
-	pass
+	var player = m_player.instance()
+	player.position = m_starting_room_pos + Vector2(10,10) #TODO 
+	add_child(player)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

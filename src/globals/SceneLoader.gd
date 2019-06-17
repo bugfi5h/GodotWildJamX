@@ -84,7 +84,7 @@ func set_new_scene(scene_resource):
 	
 	if has_init_func and has_progress_signal:
 		current_scene.connect("level_loading_progress_changed", self, "_on_loading_progress_changed")
-		current_scene.initialize_level()
+		current_scene.initialize_level(get_viewport().get_visible_rect().size)
 	else:
 		fade_out_and_and_to_root()
 		
