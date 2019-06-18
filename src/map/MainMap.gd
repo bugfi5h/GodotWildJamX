@@ -4,6 +4,13 @@ extends Node2D
 var m_room_dimensions : Vector2 = Vector2()
 var m_room_grid : Array
 
+export var x_room_count = 10
+export var y_room_count = 10
+export var rooms = 20
+export var secret_rooms = 3
+
+func get_stage_dimensions() -> Vector2:
+	return m_room_dimensions * Vector2(x_room_count, y_room_count)
 
 func _ready():
 	GameState.highscore += 1
@@ -42,7 +49,7 @@ func initialize_level(display_size : Vector2) -> void:
 	randomize()
 	m_room_dimensions = display_size * $MapCamera.zoom
 	emit_signal("level_loading_progress_changed",loading_states.START)
-	var grid = m_generator.start_generation(10,10,20,5) # TODO VALUES
+	var grid = m_generator.start_generation(x_room_count,y_room_count,rooms,secret_rooms) # TODO VALUES
 	_init_room_grid(grid)
 	emit_signal("level_loading_progress_changed",loading_states.GRID_LOADED)
 	_create_rooms(grid)

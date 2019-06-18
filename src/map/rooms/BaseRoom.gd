@@ -73,3 +73,9 @@ func remove_door_at_key(key : int):
 		m_neighbours[key] = null
 		door_count -= 1
 
+
+
+func _on_GlitchDetectionArea_body_entered(body):
+	if body.has_method("is_glitching"):
+		if body.is_glitching():
+			body.set_glitch_mode(false)
