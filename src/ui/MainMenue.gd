@@ -6,6 +6,7 @@ func _on_BtnQuit_pressed() -> void:
 
 
 func _on_BtnPlay_pressed() -> void:
+	GameState.reset_game()
 	SceneLoader.goto_scene("res://map/MainMap.tscn")
 
 

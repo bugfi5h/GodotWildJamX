@@ -4,6 +4,10 @@ extends Node2D
 var m_room_dimensions : Vector2 = Vector2()
 var m_room_grid : Array
 
+
+func _ready():
+	GameState.highscore += 1
+
 enum loading_states {
 	START = 0,
 	GRID_LOADED = 25,
