@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall_tileset.png-35f19c79211dc2f6b573b9531a5ded20.stex"
+path="res://.import/Asteroid.png-71387ffee78721043d8a3d078b5415e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wall_tileset.png"
-dest_files=[ "res://.import/wall_tileset.png-35f19c79211dc2f6b573b9531a5ded20.stex" ]
+source_file="res://assets/images/characters/meteorite/Asteroid.png"
+dest_files=[ "res://.import/Asteroid.png-71387ffee78721043d8a3d078b5415e3.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

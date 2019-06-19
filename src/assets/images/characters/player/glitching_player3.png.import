@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BackgroundSettings.png-d3d19b0445246b6a9afa186d8c6becfb.stex"
+path="res://.import/glitching_player3.png-0abcfed1350ec0b83886f9bcab9dbb4f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/BackgroundSettings.png"
-dest_files=[ "res://.import/BackgroundSettings.png-d3d19b0445246b6a9afa186d8c6becfb.stex" ]
+source_file="res://assets/images/characters/player/glitching_player3.png"
+dest_files=[ "res://.import/glitching_player3.png-0abcfed1350ec0b83886f9bcab9dbb4f.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

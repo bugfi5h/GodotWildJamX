@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glitch2.png-50450897bac62c9e1b5273e8202dcf30.stex"
+path="res://.import/door_space_tileset.png-7c18324d30c5c9f016cfeda7d4458c7d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/glitch2.png"
-dest_files=[ "res://.import/glitch2.png-50450897bac62c9e1b5273e8202dcf30.stex" ]
+source_file="res://assets/images/map/door_space_tileset.png"
+dest_files=[ "res://.import/door_space_tileset.png-7c18324d30c5c9f016cfeda7d4458c7d.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

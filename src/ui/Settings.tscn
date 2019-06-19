@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://ui/Settings.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/BackgroundSettings.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/BackgroundSettings.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/buttons/ButtonBack.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/buttons/ButtonBackPressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/buttons/ButtonMusicActive.png" type="Texture" id=5]
@@ -146,7 +146,6 @@ custom_styles/grabber_area = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 scrollable = false
 ticks_on_borders = true
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnBack" to="." method="_on_BtnBack_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Musik/BtnMusic" to="." method="_on_BtnMusic_toggled"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Musik/NinePatchRect/Volume/MusikSlider" to="." method="_on_MusikSlider_value_changed"]

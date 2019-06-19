@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/blob-in-space.ogg-b8eaf66344940be5a4c8757d85dce409.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/blob-in-space.ogg"
+dest_files=[ "res://.import/blob-in-space.ogg-b8eaf66344940be5a4c8757d85dce409.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
