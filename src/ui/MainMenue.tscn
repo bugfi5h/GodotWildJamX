@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ui/MainMenue.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/BackgroundMenu.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/BackgroundMenu.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/buttons/ButtonQuit.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/buttons/ButtonQuitPressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/buttons/ButtonPlay.png" type="Texture" id=5]
@@ -84,7 +84,6 @@ texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
 expand = true
 stretch_mode = 5
-
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftButtons/BtnQuit" to="." method="_on_BtnQuit_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightButtons/BtnPlay" to="." method="_on_BtnPlay_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightButtons/BtnSettings" to="." method="_on_BtnSettings_pressed"]

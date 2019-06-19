@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://items/glorbs/Glorb.gd" type="Script" id=1]
-[ext_resource path="res://assets/glorb_tileset.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/items/glorb_tileset.png" type="Texture" id=2]
+
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 2.73395

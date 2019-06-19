@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="WallsAreItchy"
 run/main_scene="res://ui/MainMenue.tscn"
-config/icon="res://assets/icon.png"
+config/icon="res://assets/images/icon.png"
 
 [autoload]
 
@@ -36,6 +36,7 @@ SceneLoader="*res://globals/SceneLoader.tscn"
 Helper="*res://globals/Helper.gd"
 GameSettings="*res://globals/GameSettings.gd"
 GameState="*res://globals/GameState.gd"
+SoundEffects="*res://globals/SoundEffects.tscn"
 
 [display]
 

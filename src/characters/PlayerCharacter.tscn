@@ -2,16 +2,17 @@
 
 [ext_resource path="res://characters/BaseCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/PlayerCharacter.gd" type="Script" id=2]
-[ext_resource path="res://assets/glitch1.png" type="Texture" id=3]
-[ext_resource path="res://assets/attack0.png" type="Texture" id=4]
-[ext_resource path="res://assets/glitching_player2.png" type="Texture" id=5]
-[ext_resource path="res://assets/glitching_player3.png" type="Texture" id=6]
-[ext_resource path="res://assets/glitching_player4.png" type="Texture" id=7]
-[ext_resource path="res://assets/glitching_player5.png" type="Texture" id=8]
-[ext_resource path="res://assets/glitching_player6.png" type="Texture" id=9]
-[ext_resource path="res://assets/glitching_player7.png" type="Texture" id=10]
-[ext_resource path="res://assets/glitching_player8.png" type="Texture" id=11]
-[ext_resource path="res://assets/glitch2.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/characters/player/glitch1.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/characters/player/attack0.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/characters/player/glitching_player2.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/characters/player/glitching_player3.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/characters/player/glitching_player4.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/characters/player/glitching_player5.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/characters/player/glitching_player6.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/characters/player/glitching_player7.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/characters/player/glitching_player8.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/characters/player/glitch2.png" type="Texture" id=12]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
