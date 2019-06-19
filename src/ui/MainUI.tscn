@@ -1,6 +1,24 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/MainUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/ui/VolumeBar.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/VolumeBarVolume.png" type="Texture" id=3]
 
 [node name="MainUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 100.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 20 )
+texture = ExtResource( 2 )
+
+[node name="Glorbmeter" type="TextureProgress" parent="NinePatchRect"]
+margin_right = 100.0
+margin_bottom = 20.0
+value = 100.0
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
 

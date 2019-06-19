@@ -11,11 +11,11 @@
 [ext_resource path="res://assets/images/ui/buttons/ButtonSoundActive.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/ui/buttons/ButtonSoundInactive.png" type="Texture" id=10]
 
+[sub_resource type="ImageTexture" id=1]
+
 [sub_resource type="ImageTexture" id=2]
 
 [sub_resource type="ImageTexture" id=3]
-
-[sub_resource type="ImageTexture" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -90,9 +90,9 @@ margin_right = 213.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 213, 80 )
 size_flags_vertical = 1
-custom_icons/grabber_disabled = SubResource( 2 )
-custom_icons/grabber_highlight = SubResource( 3 )
-custom_icons/grabber = SubResource( 1 )
+custom_icons/grabber_disabled = SubResource( 1 )
+custom_icons/grabber_highlight = SubResource( 2 )
+custom_icons/grabber = SubResource( 3 )
 custom_styles/slider = SubResource( 4 )
 custom_styles/grabber_disabled = SubResource( 5 )
 custom_styles/grabber_highlight = SubResource( 6 )
@@ -136,9 +136,9 @@ margin_right = 213.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 213, 80 )
 size_flags_vertical = 1
-custom_icons/grabber_disabled = SubResource( 2 )
-custom_icons/grabber_highlight = SubResource( 3 )
-custom_icons/grabber = SubResource( 1 )
+custom_icons/grabber_disabled = SubResource( 1 )
+custom_icons/grabber_highlight = SubResource( 2 )
+custom_icons/grabber = SubResource( 3 )
 custom_styles/slider = SubResource( 4 )
 custom_styles/grabber_disabled = SubResource( 5 )
 custom_styles/grabber_highlight = SubResource( 6 )

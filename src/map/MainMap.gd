@@ -153,7 +153,8 @@ func _spawn_player_and_mobs() -> void:
 	player.position = m_starting_room_pos + Vector2(10,10) #TODO 
 	add_child(player)
 	
-
+func disable_camera_smoothing_for_frame() -> void:
+	$MapCamera.disable_smoothing_for_frame()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

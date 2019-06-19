@@ -58,7 +58,7 @@ format = 1
 
 [node name="GlitchDetectionArea" type="Area2D" parent="."]
 position = Vector2( 240, 129 )
-collision_mask = 6
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GlitchDetectionArea"]
 shape = SubResource( 1 )

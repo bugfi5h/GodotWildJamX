@@ -2,8 +2,8 @@ extends Node
 
 var m_player_health : int = 6
 var m_player_max_health : int = 6
-var m_player_glorb_meter : int = 100
-var m_player_max_glorb_meter : int = 100
+var m_player_glorb_meter : float = 100
+var m_player_max_glorb_meter : float = 100
 
 var highscore : int = 0
 
@@ -27,10 +27,10 @@ func set_player_health(health: int) -> void:
 		m_player_health = health
 		emit_signal("player_health_changed", health)
 	
-func get_player_glorb_meter()->int:
+func get_player_glorb_meter()->float:
 	return m_player_glorb_meter
 	
-func set_player_glorb_meter(meter: int) -> void:
+func set_player_glorb_meter(meter: float) -> void:
 	if m_player_glorb_meter != meter:
 		m_player_glorb_meter = meter
 		emit_signal("player_glorb_meter_changed", meter)
@@ -43,10 +43,10 @@ func set_player_max_health(health : int) -> void:
 		m_player_max_health = health
 		emit_signal("player_max_health_changed", health)
 		
-func get_player_max_glorb_meter()->int:
+func get_player_max_glorb_meter()->float:
 	return m_player_max_glorb_meter
 	
-func set_player_max_glorb_meter(meter: int) -> void:
+func set_player_max_glorb_meter(meter: float) -> void:
 	if m_player_max_glorb_meter != meter:
 		m_player_max_glorb_meter = meter
 		emit_signal("player_max_glorb_meter_changed", meter)

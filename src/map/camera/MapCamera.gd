@@ -4,6 +4,7 @@ var m_grid_position :Vector2 = Vector2()
 
 export var debug : bool = false
 var debug_update_once : bool = false
+var m_disable_smoothing : bool = false
 
 onready var m_parent : Node2D = get_parent()
 
@@ -12,6 +13,12 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:	
 	if !debug:
+		if m_disable_smoothing:
+			smoothing_enabled = false
+			m_disable_smoothing = false
+		else:
+			if !smoothing_enabled:
+				smoothing_enabled = true
 		_update_grid_position()
 	else:
 		if !debug_update_once:
@@ -36,6 +43,9 @@ func _handle_debug_movement(delta : int) -> void:
 	if Input.is_key_pressed(KEY_KP_6):
 		position.x += 10
 	#zoom = zoom + zoom_velocity.normalized()*delta
+
+func disable_smoothing_for_frame():
+	m_disable_smoothing = true
 
 func _update_grid_position() -> void:
 	var player = Helper.get_player()

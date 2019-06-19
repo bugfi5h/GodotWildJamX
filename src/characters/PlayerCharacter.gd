@@ -16,7 +16,7 @@ func _ready() -> void:
 	m_parent = get_parent()
 	
 
-func change_max_glorb_meter(change:int) -> void:
+func change_max_glorb_meter(change:float) -> void:
 	max_glorb_meter = max(0,max_glorb_meter + change)
 	GameState.set_player_max_glorb_meter(max_glorb_meter)
 	if max_glorb_meter - current_glorb_meter <0:
@@ -34,7 +34,7 @@ func change_health(change:int) -> void:
 	.change_health(change)
 	GameState.set_player_health(current_health)
 
-func change_glorb_meter(change:int) -> void:
+func change_glorb_meter(change:float) -> void:
 	.change_glorb_meter(change)
 	GameState.set_player_glorb_meter(current_glorb_meter)
 
@@ -43,6 +43,7 @@ func die() -> void:
 	.die()
 
 func _physics_process(delta) -> void:
+	._physics_process(delta)
 	if !m_is_glitching:
 		_process_normal_movement(delta)
 	else:
@@ -91,14 +92,21 @@ func _process_glitch_movement(delta) -> void:
 	if m_parent.has_method("get_stage_dimensions"):
 		var stage_dimensions = m_parent.get_stage_dimensions()
 		var test = $Sprite.texture.get_size().x
+		var pos_changed = false
 		if position.x < -$Sprite.texture.get_size().x /2:
 			position.x = stage_dimensions.x
+			pos_changed = true
 		if position.x > stage_dimensions.x+$Sprite.texture.get_size().x/2:
 			position.x = 0
+			pos_changed = true
 		if position.y < -$Sprite.texture.get_size().y/2:
 			position.y = stage_dimensions.y
+			pos_changed = true
 		if position.y > stage_dimensions.y+$Sprite.texture.get_size().y/2:
 			position.y = 0
+			pos_changed = true
+		if pos_changed:
+			m_parent.disable_camera_smoothing_for_frame()
 
 func _on_PunchHit_area_entered(area) -> void:
 	if area.is_in_group("hitbox"):
