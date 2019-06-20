@@ -28,6 +28,7 @@ var m_generator : Node2D = preload("res://test/Generator.gd").new()
 var m_starting_room : PackedScene = preload("res://map/rooms/StartRoom.tscn")
 var m_starting_room_pos : Vector2 = Vector2()
 var m_player : PackedScene = preload("res://characters/PlayerCharacter.tscn")
+var m_empty_space : PackedScene = preload("res://map/rooms/EmptySpace.tscn")
 
 var m_room_scenes : Array = [
 	# hier neue Räume reinpacken: { scene: <path_to_scene>, weight: 5 }
@@ -87,6 +88,8 @@ func _create_rooms(grid : Array) -> void:
 							_select_room_to_place(x, y, all_normal_weights, m_room_scenes)
 						m_generator.Room_Type.SECRET:
 							_select_room_to_place(x, y, all_secret_weights, m_secret_room_scenes)
+						m_generator.Room_Type.NONE:
+							_place_empty_space(x,y)
 		else:
 			print("ERROR: Gewichtungen sind 0") # TODO
 	else:
@@ -99,6 +102,14 @@ func _select_room_to_place(x: int, y: int, all_weights : int, room_list : Array)
 		if weight <= 0 :		#Ist das Resultat <= 0 haben wir einen Gewinner
 			_place_room(x, y, room.scene)
 			break
+
+func _place_empty_space(x : int, y: int) -> void:
+	var posX = float(x)*m_room_dimensions.x
+	var posY = float(y)*m_room_dimensions.y
+	var e_space = m_empty_space.instance()
+	e_space.position.x = posX
+	e_space.position.y = posY
+	add_child(e_space)
 
 func _place_room(x : int, y: int, sceneType : PackedScene) -> void:
 	var posX = float(x)*m_room_dimensions.x

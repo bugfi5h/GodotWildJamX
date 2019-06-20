@@ -5,10 +5,13 @@ var m_hearts : Array = []
 var m_animated_texture : PackedScene = preload("res://ui/custom_elements/AnimatedTextureRect.tscn")
 var m_sprite_frames : Resource = preload("res://assets/images/ui/icons/heart_animation_sprite_frames.tres")
 
+var m_glorb_meter : Node2D
+
 func _ready() -> void:
 	_on_max_healt_changed(GameState.get_player_max_health())
-	$VBoxContainer/NinePatchRect/Glorbmeter.max_value = GameState.get_player_max_glorb_meter()
-	$VBoxContainer/NinePatchRect/Glorbmeter.value = GameState.get_player_glorb_meter()
+	m_glorb_meter = $VBoxContainer/NinePatchRect/Glorbmeter
+	m_glorb_meter.max_value = GameState.get_player_max_glorb_meter()
+	m_glorb_meter.value = GameState.get_player_glorb_meter()
 	GameState.connect("player_glorb_meter_changed", self, "_on_glorb_meter_changed")
 	GameState.connect("player_max_glorb_meter_changed", self, "_on_max_glorb_meter_changed")
 	GameState.connect("player_health_changed", self, "_on_health_changed")
@@ -55,8 +58,8 @@ func _add_heart() -> void:
 	container.add_child(heart)
 	
 func _on_glorb_meter_changed(value : int) -> void:
-	$NinePatchRect/Glorbmeter.value = value
+	m_glorb_meter.value = value
 	
 func _on_max_glorb_meter_changed(value : int) -> void:
-	$NinePatchRect/Glorbmeter.max_value = value
+	m_glorb_meter.max_value = value
 
