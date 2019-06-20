@@ -150,7 +150,7 @@ func _add_doors() -> void:
 
 func _spawn_player_and_mobs() -> void:
 	var player = m_player.instance()
-	player.position = m_starting_room_pos + Vector2(10,10) #TODO 
+	player.position = m_starting_room_pos + (m_room_dimensions / 2)
 	add_child(player)
 	
 func disable_camera_smoothing_for_frame() -> void:

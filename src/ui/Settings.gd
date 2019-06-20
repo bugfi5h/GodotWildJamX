@@ -8,6 +8,8 @@ extends Control
 func _ready()-> void:
 	$MarginContainer/VBoxContainer/Musik/NinePatchRect/Volume/MusikSlider.value = GameSettings.music_volume
 	$MarginContainer/VBoxContainer/Sound/NinePatchRect/Volume/SoundSlider.value = GameSettings.sound_volume
+	$MarginContainer/VBoxContainer/Sound/NinePatchRect/Volume.value = GameSettings.sound_volume
+	$MarginContainer/VBoxContainer/Musik/NinePatchRect/Volume.value = GameSettings.music_volume
 	$MarginContainer/VBoxContainer/Musik/BtnMusic.pressed = !GameSettings.music_enabled
 	$MarginContainer/VBoxContainer/Sound/BtnSound.pressed = !GameSettings.sound_enabled 
 

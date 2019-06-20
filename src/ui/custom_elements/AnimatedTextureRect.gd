@@ -10,6 +10,10 @@ var m_should_loop : bool = true
 signal animation_finished(anim_name)
 signal frame_changed(frame)
 
+func _ready():
+	rect_min_size = $TextureRect.rect_size
+	rect_size = $TextureRect.rect_size
+
 func get_sprites() -> SpriteFrames:
 	return sprites
 
@@ -37,7 +41,7 @@ func set_sprites(new_sprites : SpriteFrames) -> void:
 		
 func reset() -> void:
 	if has_node("TextureRect"):
-		$TextureRect.texture = null
+		_set_texture(null)
 	frame = 0
 	property_list_changed_notify()
 	
@@ -47,23 +51,36 @@ func _set_current_frame(new_frame : int) -> void:
 		var frame_count = sprites.get_frame_count(animation)
 		if new_frame < frame_count:
 			if has_node("TextureRect"):
-				$TextureRect.texture = sprites.get_frame(animation, new_frame)
+				_set_texture(sprites.get_frame(animation, new_frame))
 			frame = new_frame
 		emit_signal("frame_changed", frame)
 		property_list_changed_notify()
+
+func _set_texture(new_texture : Texture) -> void:
+	if has_node("TextureRect"):
+		$TextureRect.texture = new_texture
+		if $TextureRect.texture != null:
+			rect_min_size = $TextureRect.rect_size
+			rect_size = $TextureRect.rect_size
+		else:
+			rect_min_size = Vector2.ZERO
+			rect_size = Vector2.ZERO
+	print(rect_min_size)
+			
+			
 
 func play(anim_name : String) -> void:
 	if sprites == null:
 		return
 	if !(anim_name in sprites.get_animation_names()):
 		return
+	set_animation(anim_name)
 	_set_playing(true)
 	
 func _set_playing(play : bool):
 	if sprites != null && animation != null:
 		playing = play
-		if playing:
-			set_animation(animation)
+
 		
 func stop() -> void:
 	if playing:
