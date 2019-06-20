@@ -1,15 +1,19 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ui/MainMenue.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/BackgroundMenu.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/buttons/ButtonQuit.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/buttons/ButtonQuitPressed.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/ui/buttons/ButtonPlay.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/ui/buttons/ButtonPlayPressed.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/ui/buttons/ButtonSetting.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/ui/buttons/ButtonSettingPressed.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/ui/buttons/ButtonCredits.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/ui/buttons/ButtonCreditsPressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ui/buttons/ButtonQuitHover.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/buttons/ButtonPlay.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/ui/buttons/ButtonPlayPressed.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/buttons/ButtonPlayHover.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ui/buttons/ButtonSetting.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/ui/buttons/ButtonSettingPressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ui/buttons/ButtonSettingHover.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/ui/buttons/ButtonCredits.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/buttons/ButtonCreditsPressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/ui/buttons/ButtonCreditsHover.png" type="Texture" id=14]
 
 [node name="MainMenue" type="Control"]
 anchor_right = 1.0
@@ -47,6 +51,7 @@ size_flags_horizontal = 10
 size_flags_vertical = 10
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 4
 
@@ -60,8 +65,9 @@ margin_right = 155.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 155, 100 )
 rect_pivot_offset = Vector2( 64.6443, 224.649 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
@@ -70,8 +76,9 @@ margin_top = 104.0
 margin_right = 155.0
 margin_bottom = 164.0
 rect_min_size = Vector2( 155, 60 )
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
 expand = true
 stretch_mode = 5
 
@@ -80,11 +87,11 @@ margin_top = 168.0
 margin_right = 155.0
 margin_bottom = 238.0
 rect_min_size = Vector2( 155, 70 )
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 expand = true
 stretch_mode = 5
-
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftButtons/BtnQuit" to="." method="_on_BtnQuit_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightButtons/BtnPlay" to="." method="_on_BtnPlay_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightButtons/BtnSettings" to="." method="_on_BtnSettings_pressed"]

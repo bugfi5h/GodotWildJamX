@@ -1,15 +1,18 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://ui/Settings.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/BackgroundSettings.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/buttons/ButtonBack.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/buttons/ButtonBackPressed.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/ui/buttons/ButtonMusicActive.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/ui/buttons/ButtonMusicInactive.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/ui/VolumeBar.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/ui/VolumeBarVolume.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/ui/buttons/ButtonSoundActive.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/ui/buttons/ButtonSoundInactive.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ui/buttons/ButtonBackHover.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/ui/buttons/ButtonMusicActive.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/ui/buttons/ButtonMusicInactive.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/ui/buttons/ButtonMusicHover.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/ui/VolumeBar.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/ui/VolumeBarVolume.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/ui/buttons/ButtonSoundActive.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/ui/buttons/ButtonSoundInactive.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/ui/buttons/ButtonSoundHover.png" type="Texture" id=13]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -38,12 +41,12 @@ anchor_bottom = 1.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
 margin_right = 480.0
-margin_bottom = 270.0
+margin_bottom = 256.0
 texture = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_right = 480.0
-margin_bottom = 270.0
+margin_bottom = 256.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -53,6 +56,7 @@ margin_bottom = 63.0
 rect_min_size = Vector2( 77, 63 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 4
 
@@ -66,8 +70,9 @@ margin_right = 177.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 177, 80 )
 toggle_mode = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
 expand = true
 stretch_mode = 4
 
@@ -76,13 +81,13 @@ margin_left = 181.0
 margin_right = 394.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 213, 80 )
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 
 [node name="Volume" type="TextureProgress" parent="MarginContainer/VBoxContainer/Musik/NinePatchRect"]
 show_behind_parent = true
 rect_min_size = Vector2( 213, 80 )
 value = 100.0
-texture_progress = ExtResource( 8 )
+texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
 
 [node name="MusikSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Musik/NinePatchRect/Volume"]
@@ -112,8 +117,9 @@ margin_bottom = 80.0
 rect_min_size = Vector2( 175, 70 )
 toggle_mode = true
 shortcut_in_tooltip = false
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
 expand = true
 stretch_mode = 4
 
@@ -122,13 +128,13 @@ margin_left = 179.0
 margin_right = 392.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 213, 80 )
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 
 [node name="Volume" type="TextureProgress" parent="MarginContainer/VBoxContainer/Sound/NinePatchRect"]
 show_behind_parent = true
 rect_min_size = Vector2( 213, 80 )
 value = 100.0
-texture_progress = ExtResource( 8 )
+texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
 
 [node name="SoundSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Sound/NinePatchRect/Volume"]
