@@ -4,16 +4,30 @@ extends Node2D
 var m_room_dimensions : Vector2 = Vector2()
 var m_room_grid : Array
 
-export var x_room_count = 10
-export var y_room_count = 10
-export var rooms = 20
-export var secret_rooms = 3
+export var x_room_count : int = 10
+export var y_room_count : int = 10
+export var rooms : int = 20
+export var secret_rooms :int = 3
+
+var m_mega_glorbs : int = 0
+var m_glorbs_to_find : int = 4
+
+signal found_all_glorbs()
 
 func get_stage_dimensions() -> Vector2:
 	return m_room_dimensions * Vector2(x_room_count, y_room_count)
 
 func _ready():
+	add_to_group("main_map");
 	GameState.highscore += 1
+
+func add_mega_glorb() -> void:
+	m_mega_glorbs += 1
+	if m_mega_glorbs >= m_glorbs_to_find:
+		#play animation!
+		emit_signal("found_all_glorbs")
+		#erstmal. Klären wär das Level wechselt
+		SceneLoader.goto_scene("res://map/MainMap.tscn")
 
 enum loading_states {
 	START = 0,
