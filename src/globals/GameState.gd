@@ -6,6 +6,7 @@ var m_player_glorb_meter : float = 100
 var m_player_max_glorb_meter : float = 100
 
 var highscore : int = 0
+var glorbs_to_find : int = 4
 
 func reset_game():
 	set_player_max_health(6)

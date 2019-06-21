@@ -12,8 +12,8 @@ func _ready():
 
 func generate_deco(amount : int) -> void:
 	for i in range(amount):
-		var x = (randi() % 28 + 1)
-		var y = (randi() % 14 + 1)
+		var x = (randi() % 26 + 2)
+		var y = (randi() % 13 + 2)
 		$Deco.set_cell(x, y, 34)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

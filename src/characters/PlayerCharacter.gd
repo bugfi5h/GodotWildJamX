@@ -44,10 +44,24 @@ func die() -> void:
 
 func _physics_process(delta) -> void:
 	._physics_process(delta)
+	_move_arrow(delta)
 	if !m_is_glitching:
 		_process_normal_movement(delta)
 	else:
 		_process_glitch_movement(delta)
+
+func _move_arrow(delta):
+	var mega_glorbs = get_tree().get_nodes_in_group("mega_glorb")
+	if mega_glorbs.size() > 0:
+		var nearest = mega_glorbs[0]
+		for glorb in mega_glorbs:
+			if nearest != glorb:
+				if global_position.distance_to(glorb.global_position) < global_position.distance_to(nearest.global_position):
+					nearest = glorb
+		var arrow = $ArrowContainer
+		var target_dir = (nearest.global_position - arrow.global_position).normalized()
+		var current_dir = Vector2(1, 0).rotated(arrow.global_rotation)
+		arrow.global_rotation = current_dir.linear_interpolate(target_dir, 4.0 * delta).angle()			
 
 func set_glitch_mode(on:bool) -> void:
 	.set_glitch_mode(on)

@@ -13,16 +13,22 @@ var m_mega_glorbs : int = 0
 var m_glorbs_to_find : int = 4
 
 signal found_all_glorbs()
+signal glorb_count_changed(value)
+signal glorbs_to_find_changed(value)
 
 func get_stage_dimensions() -> Vector2:
 	return m_room_dimensions * Vector2(x_room_count, y_room_count)
 
 func _ready():
 	add_to_group("main_map");
+	m_glorbs_to_find = GameState.glorbs_to_find
+	emit_signal("glorb_count_changed", m_mega_glorbs)
+	emit_signal("glorbs_to_find_changed", m_glorbs_to_find)
 	GameState.highscore += 1
 
 func add_mega_glorb() -> void:
 	m_mega_glorbs += 1
+	emit_signal("glorb_count_changed", m_mega_glorbs)
 	if m_mega_glorbs >= m_glorbs_to_find:
 		#play animation!
 		emit_signal("found_all_glorbs")
@@ -42,6 +48,7 @@ var m_generator : Node2D = preload("res://test/Generator.gd").new()
 var m_starting_room : PackedScene = preload("res://map/rooms/StartRoom.tscn")
 var m_starting_room_pos : Vector2 = Vector2()
 var m_player : PackedScene = preload("res://characters/PlayerCharacter.tscn")
+var m_mega_glorb : PackedScene = preload("res://items/glorbs/MegaGlorb.tscn")
 var m_empty_space : PackedScene = preload("res://map/rooms/EmptySpace.tscn")
 
 var m_room_scenes : Array = [
@@ -170,13 +177,24 @@ func _add_doors() -> void:
 		for y in range(m_room_grid[x].size()):
 			var room = m_room_grid[x][y]
 			if room != null:
-				room.update_doors()
-	
+				room.update_doors()	
 
 func _spawn_player_and_mobs() -> void:
 	var player = m_player.instance()
 	player.position = m_starting_room_pos + (m_room_dimensions / 2)
 	add_child(player)
+	for i in range(GameState.glorbs_to_find):
+		var x = randi()%x_room_count
+		var y = randi()%y_room_count
+		while (m_room_grid[x][y] == null or m_room_grid[x][y] == m_starting_room or m_room_grid[x][y].has_node("MegaGlorb")):
+			x = randi()%x_room_count
+			y = randi()%y_room_count
+		var glorb = m_mega_glorb.instance()
+		var room = m_room_grid[x][y]
+		glorb.position = m_room_dimensions / 2 
+		glorb.set_main_map(self)
+		room.add_child(glorb)
+		print(i)
 	
 func disable_camera_smoothing_for_frame() -> void:
 	$MapCamera.disable_smoothing_for_frame()
