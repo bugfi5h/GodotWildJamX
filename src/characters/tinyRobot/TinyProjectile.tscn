@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://characters/tinyRobot/TinyProjectile.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/characters/tinyRobot/projectile/projectile1.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/characters/tinyRobot/projectile/projectile2.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.66494
+height = 0.470814
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "fly",
+"speed": 5.0
+} ]
+
+[node name="TinyProjectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 1 )
+speed = 250
+damage = 1
+lifetime = 5000.0
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 2000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 0.117647, 0.192157, 1, 1 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "fly"
+playing = true
+[connection signal="area_entered" from="." to="." method="_on_Projectile_area_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]

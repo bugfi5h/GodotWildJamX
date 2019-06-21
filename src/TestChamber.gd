@@ -12,3 +12,11 @@ func _on_Button_pressed():
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	if enemies.size() > 0:
 		enemies[0].get_node("Hitbox").take_damage(1)
+
+
+func _on_Robot_shoot_projectile(PROJECTILE, projectileSpawn, direction):
+	var firedProjectile = PROJECTILE.instance()
+	self.add_child(firedProjectile)
+	firedProjectile.start(projectileSpawn, direction)
+	pass 
+	
