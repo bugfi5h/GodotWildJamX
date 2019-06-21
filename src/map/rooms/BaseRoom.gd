@@ -7,8 +7,26 @@ export var has_door_top : bool = false
 export var has_door_bottom : bool = false
 export var door_count : int = 0
 
+var m_floor_door_tiles : Dictionary = {
+	Helper.direction.LEFT: 	[Vector2(0,7), Vector2(0,8)],
+	Helper.direction.RIGHT:	[Vector2(29,7), Vector2(29,8)],
+	Helper.direction.TOP:	[Vector2(14,0), Vector2(15,0)],
+	Helper.direction.BOTTOM:[Vector2(14,15), Vector2(15,15)],
+}
 
+var m_wall_no_door_tiles : Dictionary = {
+	Helper.direction.LEFT: 	[Vector2(1,7), Vector2(1,8)],
+	Helper.direction.RIGHT:	[Vector2(28,7), Vector2(28,8)],
+	Helper.direction.TOP:	[Vector2(14,1), Vector2(15,1)],
+	Helper.direction.BOTTOM:[Vector2(14,14), Vector2(15,14)],
+}
 
+var m_wall_door_tiles : Dictionary = {
+	Helper.direction.LEFT: 	[Vector2(0,6), Vector2(0,9)],
+	Helper.direction.RIGHT:	[Vector2(29,6), Vector2(29,9)],
+	Helper.direction.TOP:	[Vector2(13,0), Vector2(16,0)],
+	Helper.direction.BOTTOM:[Vector2(13,15), Vector2(16,15)],
+}
 
 var m_neighbours : Dictionary
 
@@ -63,17 +81,28 @@ func _get_opposite_key(key : int) -> int:
 	return opposite_key
 			
 func update_doors() -> void:
-	$DoorTop.visible = has_door_top
-	$DoorLeft.visible = has_door_left
-	$DoorRight.visible = has_door_right
-	$DoorBottom.visible = has_door_bottom
+	set_door_tiles(Helper.direction.LEFT, has_door_left)
+	set_door_tiles(Helper.direction.TOP, has_door_top)
+	set_door_tiles(Helper.direction.BOTTOM, has_door_bottom)
+	set_door_tiles(Helper.direction.RIGHT, has_door_right)
+	
+func set_door_tiles(direction : int, has_door : bool) -> void:
+	if has_door:
+		var tiles_to_remove = m_wall_no_door_tiles[direction]
+		for pos in tiles_to_remove:
+			$Walls.set_cell(pos.x, pos.y, -1)
+	else:
+		var wall_tiles_to_remove = m_wall_door_tiles[direction]
+		for pos in wall_tiles_to_remove:
+			$Walls.set_cell(pos.x, pos.y, -1)
+		var floor_tiles_to_remove = m_floor_door_tiles[direction]
+		for pos in floor_tiles_to_remove:
+			$Ground.set_cell(pos.x, pos.y, -1)
 
 func remove_door_at_key(key : int):
 	if m_neighbours[key] != null:
 		m_neighbours[key] = null
 		door_count -= 1
-
-
 
 func _on_GlitchDetectionArea_body_entered(body):
 	if body.has_method("is_glitching"):
