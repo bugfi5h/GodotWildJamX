@@ -55,7 +55,22 @@ func set_glitch_mode(on:bool) -> void:
 		$AnimationPlayer.play("glitching")
 	else:
 		$AnimationPlayer.play("idle")
-		
+
+func play_walk_animation() -> void:
+	if !m_is_glitching && !m_is_attacking:
+		if m_velocity == Vector2.ZERO:
+			$AnimationPlayer.play("idle")
+		elif m_look_direction == Vector2(0,-1):
+			$AnimationPlayer.play("walk_up")
+		elif m_look_direction == Vector2(0,1):
+			$AnimationPlayer.play("walk_down")
+		elif m_look_direction == Vector2(-1,0):
+			$Sprite.scale.x = -1
+			$AnimationPlayer.play("walk_sideways")
+		elif m_look_direction == Vector2(1,0):
+			$Sprite.scale.x = 1
+			$AnimationPlayer.play("walk_sideways")
+
 func _process_normal_movement(delta):
 	m_velocity = Vector2()
 	var direction = Vector2()
@@ -74,8 +89,6 @@ func _process_normal_movement(delta):
 			direction += Vector2(1,0)
 			m_look_direction = Vector2(1,0)
 			$Sprite.scale.x = 1	
-		if direction == Vector2.ZERO:
-			$AnimationPlayer.play("idle")
 		if Input.is_action_just_pressed("attack"):
 			m_is_attacking = true
 			$AnimationPlayer.play("attack")
@@ -85,6 +98,7 @@ func _process_normal_movement(delta):
 				change_glorb_meter(-wall_glorb_cost)
 				set_glitch_mode(true)
 	m_velocity = direction.normalized()*speed
+	play_walk_animation()
 	move_and_slide(m_velocity)
 	
 func _process_glitch_movement(delta) -> void:

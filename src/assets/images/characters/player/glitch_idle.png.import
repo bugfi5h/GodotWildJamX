@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glitching_player2.png-eaacdc33c3e6ce825d7137ef62ecdbeb.stex"
+path="res://.import/glitch_idle.png-3c9ad94e932fe08bdeab30bc1d263a81.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/characters/player/glitching_player2.png"
-dest_files=[ "res://.import/glitching_player2.png-eaacdc33c3e6ce825d7137ef62ecdbeb.stex" ]
+source_file="res://assets/images/characters/player/glitch_idle.png"
+dest_files=[ "res://.import/glitch_idle.png-3c9ad94e932fe08bdeab30bc1d263a81.stex" ]
 
 [params]
 
