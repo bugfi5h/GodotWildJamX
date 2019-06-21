@@ -1,4 +1,4 @@
-extends Node2D
+extends BaseRoom
 
 # Declare member variables here. Examples:
 # var a = 2

@@ -61,7 +61,7 @@ func _move_arrow(delta):
 		var arrow = $ArrowContainer
 		var target_dir = (nearest.global_position - arrow.global_position).normalized()
 		var current_dir = Vector2(1, 0).rotated(arrow.global_rotation)
-		arrow.global_rotation = current_dir.linear_interpolate(target_dir, 4.0 * delta).angle()			
+		arrow.global_rotation = current_dir.linear_interpolate(target_dir, 1).angle()			
 
 func set_glitch_mode(on:bool) -> void:
 	.set_glitch_mode(on)

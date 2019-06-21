@@ -108,3 +108,8 @@ func _on_GlitchDetectionArea_body_entered(body):
 	if body.has_method("is_glitching"):
 		if body.is_glitching():
 			body.set_glitch_mode(false)
+			
+func _on_enemy_shooting(bullet : PackedScene, _position : Vector2, _direction : Vector2):
+	var b = bullet.instance()
+	add_child(b)
+	b.start(_position, _direction)

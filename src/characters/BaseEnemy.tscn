@@ -12,3 +12,11 @@ script = ExtResource( 2 )
 collision_layer = 4
 collision_mask = 2
 
+[node name="DetectRadius" type="Area2D" parent="." index="3"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
+
+[connection signal="body_entered" from="DetectRadius" to="." method="_on_DetectRadius_body_entered"]
+[connection signal="body_exited" from="DetectRadius" to="." method="_on_DetectRadius_body_exited"]

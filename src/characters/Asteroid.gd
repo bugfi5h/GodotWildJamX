@@ -11,6 +11,9 @@ var m_packed_self :PackedScene = null
 var m_velocity : Vector2 = Vector2()
 
 func _ready() -> void:
+	$Hitbox/CollisionShape2D.disabled = true
+	$Sprite/damage/CollisionShape2D2.disabled = true
+	$InvincibleTimer.start()
 	m_packed_self = load("res://characters/Asteroid.tscn")
 	if should_generate_random_start_direction:
 		generate_random_start_direction()
@@ -51,3 +54,8 @@ func die():
 func _on_damage_area_entered(area) -> void:
 	if area.is_in_group("hitbox"):
 		area.take_damage(damage)
+
+
+func _on_InvisTimer_timeout():
+	$Hitbox/CollisionShape2D.disabled = false
+	$Sprite/damage/CollisionShape2D2.disabled = false
