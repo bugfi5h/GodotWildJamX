@@ -17,10 +17,10 @@ var m_floor_door_tiles : Dictionary = {
 }
 
 var m_wall_no_door_tiles : Dictionary = {
-	Helper.direction.LEFT: 	[Vector2(1,7), Vector2(1,8)],
-	Helper.direction.RIGHT:	[Vector2(28,7), Vector2(28,8)],
-	Helper.direction.TOP:	[Vector2(14,1), Vector2(15,1)],
-	Helper.direction.BOTTOM:[Vector2(14,14), Vector2(15,14)],
+	Helper.direction.LEFT: 	[Vector2(0,7), Vector2(0,8), Vector2(1,7), Vector2(1,8)],
+	Helper.direction.RIGHT:	[Vector2(28,7), Vector2(28,8), Vector2(29,7), Vector2(29,8)],
+	Helper.direction.TOP:	[Vector2(14,0), Vector2(15,0), Vector2(14,1), Vector2(15,1)],
+	Helper.direction.BOTTOM:[Vector2(14,14), Vector2(15,14), Vector2(14,15), Vector2(15,15)],
 }
 
 var m_wall_door_tiles : Dictionary = {
