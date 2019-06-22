@@ -10,6 +10,7 @@ var can_shoot = true
 var alive = true
 var target = null
 var thinking = true
+var run = true
 var move_direction = Vector2()
 
 # Called when the node enters the scene tree for the first time.
@@ -22,13 +23,12 @@ func _ready():
 func _physics_process(delta):
 	if target:
 		var target_dir = (target.global_position - global_position).normalized()
-		move_and_slide(target_dir * speed)
+		move_direction = target_dir
 		shoot(target_dir)
 		if(target.global_position.x - global_position.x < 0):
 			$Sprite.flip_h = true
 		else:
 			$Sprite.flip_h = false
-		$AnimationPlayer.play("run")
 	elif thinking == true:
 		thinking = false
 		$ThinkTimer.start()
@@ -42,8 +42,12 @@ func _physics_process(delta):
 			$Sprite.flip_h = true
 		else:
 			$Sprite.flip_h = false
-		move_and_slide(move_direction * speed)
+	
+	if run:
 		$AnimationPlayer.play("run")
+		move_and_slide(move_direction * speed)
+	else:
+		$AnimationPlayer.play("idle")
 		
 func shoot(direction):
 	if can_shoot:
@@ -65,4 +69,16 @@ func _on_Vision_body_entered(body):
 func _on_ThinkTimer_timeout():
 	move_direction = Vector2()
 	thinking = true
+	pass # Replace with function body.
+
+
+func _on_Minimum_Distance_body_entered(body):
+	if body == target:
+		run = false
+	pass # Replace with function body.
+
+
+func _on_Minimum_Distance_body_exited(body):
+	if body == target:
+		run = true
 	pass # Replace with function body.

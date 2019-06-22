@@ -46,7 +46,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 58.5909
+radius = 42.5303
 
 [node name="Robot" instance=ExtResource( 1 )]
 scale = Vector2( 2, 2 )
@@ -90,13 +90,21 @@ anims/run = SubResource( 4 )
 wait_time = 2.0
 
 [node name="Vision" type="Area2D" parent="." index="6"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" index="0"]
+visible = false
 shape = SubResource( 5 )
 
-[node name="ThinkTimer" type="Timer" parent="." index="7"]
-wait_time = 5.0
+[node name="Minimum Distance" type="Area2D" parent="." index="7"]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Minimum Distance" index="0"]
+shape = SubResource( 5 )
+
+[node name="ThinkTimer" type="Timer" parent="." index="8"]
+wait_time = 5.0
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_ProjectileTimer_timeout"]
 [connection signal="body_entered" from="Vision" to="." method="_on_Vision_body_entered"]
+[connection signal="body_entered" from="Minimum Distance" to="." method="_on_Minimum_Distance_body_entered"]
+[connection signal="body_exited" from="Minimum Distance" to="." method="_on_Minimum_Distance_body_exited"]
 [connection signal="timeout" from="ThinkTimer" to="." method="_on_ThinkTimer_timeout"]
