@@ -6,7 +6,7 @@ export var damage : int = 1
 var m_velocity = Vector2()
 
 func start(_position : Vector2, _direction : Vector2):
-	position = _position
+	global_position = _position
 	rotation = _direction.angle()
 	m_velocity = _direction * speed
 

@@ -16,6 +16,9 @@ var move_direction = Vector2()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
+	var parent = get_parent()
+	if parent != null and parent.has_method("_on_enemy_shooting"):
+		self.connect("shoot_projectile", parent, "_on_enemy_shooting")
 	$ProjectileTimer.wait_time = PROJECTILE_COOLDOWN
 	pass # Replace with function body.
 

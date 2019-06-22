@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://TestChamber.gd" type="Script" id=1]
+[ext_resource path="res://map/rooms/BaseRoom.gd" type="Script" id=1]
 [ext_resource path="res://map/rooms/EmptySpace.tscn" type="PackedScene" id=2]
 [ext_resource path="res://map/tilesets/tres/default.tres" type="TileSet" id=3]
 [ext_resource path="res://characters/Asteroid.tscn" type="PackedScene" id=4]
@@ -39,5 +39,3 @@ position = Vector2( 71.3197, 126.532 )
 
 [node name="TinyRobot" parent="." instance=ExtResource( 6 )]
 position = Vector2( 346.941, 132.767 )
-
-[connection signal="shoot_projectile" from="TinyRobot" to="." method="_on_Robot_shoot_projectile"]
