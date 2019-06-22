@@ -18,6 +18,9 @@ export var glitch_speed : int = 150
 
 var m_is_glitching : bool = false
 
+signal glitching_started
+signal glitching_ended
+
 func is_glitching() -> bool:
 	return m_is_glitching
 	
@@ -27,10 +30,12 @@ func set_glitch_mode(on:bool) -> void:
 		collision_mask = GLITCH_MASK
 		collision_layer = GLITCH_LAYER
 		$Hitbox.monitorable = false
+		emit_signal("glitching_started")
 	else:
 		collision_mask = m_default_collision_mask
 		collision_layer = m_default_collision_layer
 		$Hitbox.monitorable = true
+		emit_signal("glitching_ended")
 
 func change_health(change:int) -> void:
 	if change < 0:

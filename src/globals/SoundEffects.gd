@@ -28,6 +28,15 @@ func connect_nodes(scene: Node):
 		connect_nodes(child)
 		if child is Button || child is TextureButton:
 			child.connect("pressed", self, "_play_button_click")
+		if child is PlayerCharacter:
+			child.connect("glitching_started", self, "_play_glitching")
+			child.connect("glitching_ended", self, "_stop_glitching")
 
 func _play_button_click():
 	$ButtonClick.play()
+
+func _play_glitching():
+	$Glitching.play()
+
+func _stop_glitching():
+	$Glitching.stop()

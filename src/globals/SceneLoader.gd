@@ -82,13 +82,15 @@ func set_new_scene(scene_resource) -> void:
 	m_current_scene = scene_resource.instance()
 	var has_init_func : bool= m_current_scene.has_method("initialize_level")
 	var has_progress_signal : bool = m_current_scene.get_script().has_script_signal("level_loading_progress_changed")
-	emit_signal("scene_changed", m_current_scene)
 	
 	if has_init_func and has_progress_signal:
 		m_current_scene.connect("level_loading_progress_changed", self, "_on_loading_progress_changed")
 		m_current_scene.initialize_level(get_viewport().get_visible_rect().size)
+		emit_signal("scene_changed", m_current_scene)
 	else:
 		fade_out_and_and_to_root()
+		emit_signal("scene_changed", m_current_scene)
+	
 
 func _on_loading_progress_changed(progress) -> void:
 	$MarginContainer/VBoxContainer/ProgressBar.value = progress
