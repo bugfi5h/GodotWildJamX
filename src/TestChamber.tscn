@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://map/rooms/BaseRoom.gd" type="Script" id=1]
 [ext_resource path="res://map/rooms/EmptySpace.tscn" type="PackedScene" id=2]
 [ext_resource path="res://map/tilesets/tres/default.tres" type="TileSet" id=3]
 [ext_resource path="res://characters/PlayerCharacter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/tinyRobot/TinyRobot.tscn" type="PackedScene" id=5]
-[ext_resource path="res://map/rooms/Blockade.tscn" type="PackedScene" id=6]
-[ext_resource path="res://characters/Asteroid.tscn" type="PackedScene" id=7]
+[ext_resource path="res://map/rooms/Blockade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/Asteroid.tscn" type="PackedScene" id=6]
+[ext_resource path="res://characters/robot/Robot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://characters/tinyRobot/TinyRobot.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.59247, 53.2877 )
@@ -43,40 +44,49 @@ format = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+current = true
 
 [node name="PlayerCharacter" parent="." instance=ExtResource( 4 )]
 position = Vector2( 71.3197, 126.532 )
 
-[node name="Robot" parent="." instance=ExtResource( 5 )]
-position = Vector2( 220.377, 112.443 )
-
-[node name="Blockade" parent="." instance=ExtResource( 6 )]
+[node name="Blockade" parent="." instance=ExtResource( 5 )]
 position = Vector2( 354.494, 96.2769 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade"]
 shape = SubResource( 1 )
 
-[node name="Blockade2" parent="." instance=ExtResource( 6 )]
+[node name="Blockade2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 354.494, 96.2769 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade2"]
 position = Vector2( 22.1533, -50.8927 )
 shape = SubResource( 2 )
 
-[node name="Blockade3" parent="." instance=ExtResource( 6 )]
+[node name="Blockade3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 354.494, 96.2769 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade3"]
 position = Vector2( 16.7647, 50.294 )
 shape = SubResource( 3 )
 
-[node name="Blockade4" parent="." instance=ExtResource( 6 )]
+[node name="Blockade4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 354.494, 96.2769 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade4"]
 position = Vector2( 74.2435, -0.59874 )
 shape = SubResource( 4 )
 
-[node name="Asteroid" parent="Blockade4/CollisionShape2D" instance=ExtResource( 7 )]
+[node name="Asteroid" parent="Blockade4/CollisionShape2D" instance=ExtResource( 6 )]
 position = Vector2( -37.7205, -19.1596 )
+
+[node name="Robot" parent="." instance=ExtResource( 7 )]
+position = Vector2( 231.154, 112.443 )
+speed = 0
+debug = true
+
+[node name="TimyRobot" parent="." instance=ExtResource( 8 )]
+position = Vector2( 264.684, 139.985 )
+scale = Vector2( 1, 1 )
+speed = 0
+debug = true
 
