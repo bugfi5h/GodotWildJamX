@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/GameOver.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/ui/GameOverBackground.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/BackgroundGameOver.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/buttons/ButtonBack.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/ui/buttons/ButtonBackPressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/ui/buttons/ButtonBackHover.png" type="Texture" id=5]
@@ -84,5 +84,4 @@ margin_left = 102.0
 margin_right = 110.0
 margin_bottom = 14.0
 text = "1"
-
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftButtons/BtnQuit" to="." method="_on_BtnQuit_pressed"]
