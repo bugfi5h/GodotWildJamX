@@ -1,10 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://map/rooms/BaseRoom.gd" type="Script" id=1]
 [ext_resource path="res://map/rooms/EmptySpace.tscn" type="PackedScene" id=2]
 [ext_resource path="res://map/tilesets/tres/default.tres" type="TileSet" id=3]
+[ext_resource path="res://map/rooms/Blockade.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 16 )
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 216.703, 106.002 )
 
 [node name="BaseRoom" type="Node2D"]
@@ -29,12 +42,38 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
+[node name="Blockades" type="Node2D" parent="."]
+position = Vector2( 472, 128 )
+
+[node name="Blockade" parent="Blockades" instance=ExtResource( 4 )]
+position = Vector2( -232, -120 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockades/Blockade"]
+shape = SubResource( 1 )
+
+[node name="Blockade2" parent="Blockades" instance=ExtResource( 4 )]
+position = Vector2( -464, 0 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Blockades/Blockade2"]
+shape = SubResource( 2 )
+
+[node name="Blockade3" parent="Blockades" instance=ExtResource( 4 )]
+position = Vector2( -232, 120 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Blockades/Blockade3"]
+shape = SubResource( 3 )
+
+[node name="Blockade4" parent="Blockades" instance=ExtResource( 4 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockades/Blockade4"]
+shape = SubResource( 4 )
+
 [node name="GlitchDetectionArea" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 240, 129 )
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GlitchDetectionArea"]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [connection signal="body_entered" from="GlitchDetectionArea" to="." method="_on_GlitchDetectionArea_body_entered"]

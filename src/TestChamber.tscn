@@ -1,11 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://map/rooms/BaseRoom.gd" type="Script" id=1]
 [ext_resource path="res://map/rooms/EmptySpace.tscn" type="PackedScene" id=2]
 [ext_resource path="res://map/tilesets/tres/default.tres" type="TileSet" id=3]
-[ext_resource path="res://characters/Asteroid.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/PlayerCharacter.tscn" type="PackedScene" id=5]
-[ext_resource path="res://characters/tinyRobot/TinyRobot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://characters/PlayerCharacter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://map/rooms/Blockade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/Asteroid.tscn" type="PackedScene" id=6]
+[ext_resource path="res://characters/robot/Robot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://characters/tinyRobot/TinyRobot.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.59247, 53.2877 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 55.6826, 2.39496 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 60.4725, 3.59242 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 3.59247, 53.2877 )
 
 [node name="TestChamber" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,20 +36,57 @@ tile_data = PoolIntArray( 15, 63, 0, 65537, 63, 0, 65538, 63, 0, 65539, 63, 0, 6
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 14, 14, 0, 16, 12, 0, 65537, 4, 0, 65538, 5, 0, 65539, 5, 0, 65540, 5, 0, 65541, 5, 0, 65542, 5, 0, 65543, 5, 0, 65544, 5, 0, 65545, 5, 0, 65546, 5, 0, 65547, 5, 0, 65548, 5, 0, 65549, 5, 0, 65550, 5, 0, 65551, 5, 0, 65552, 5, 0, 65553, 5, 0, 65554, 5, 0, 65555, 5, 0, 65556, 5, 0, 65557, 5, 0, 65558, 5, 0, 65559, 5, 0, 65560, 5, 0, 65561, 5, 0, 65562, 5, 0, 65563, 5, 0, 65564, 6, 0, 131073, 12, 0, 131100, 14, 0, 196609, 12, 0, 196636, 14, 0, 262145, 12, 0, 262172, 14, 0, 327681, 12, 0, 327708, 14, 0, 393217, 12, 0, 393244, 14, 0, 458752, 19, 0, 458753, 12, 0, 458780, 14, 0, 458781, 19, 0, 524289, 12, 0, 524316, 14, 0, 589824, 5, 0, 589825, 12, 0, 589852, 14, 0, 589853, 5, 0, 655361, 12, 0, 655388, 14, 0, 720897, 12, 0, 720924, 14, 0, 786433, 12, 0, 786460, 14, 0, 851969, 12, 0, 851996, 14, 0, 917505, 18, 0, 917506, 19, 0, 917507, 19, 0, 917508, 19, 0, 917509, 19, 0, 917510, 19, 0, 917511, 19, 0, 917512, 19, 0, 917513, 19, 0, 917514, 19, 0, 917515, 19, 0, 917516, 19, 0, 917517, 19, 0, 917518, 19, 0, 917519, 19, 0, 917520, 19, 0, 917521, 19, 0, 917522, 19, 0, 917523, 19, 0, 917524, 19, 0, 917525, 19, 0, 917526, 19, 0, 917527, 19, 0, 917528, 19, 0, 917529, 19, 0, 917530, 19, 0, 917531, 19, 0, 917532, 20, 0, 983054, 14, 0, 983056, 12, 0 )
+tile_data = PoolIntArray( 14, 14, 0, 16, 12, 0, 65537, 4, 0, 65538, 5, 0, 65539, 5, 0, 65540, 5, 0, 65541, 5, 0, 65542, 5, 0, 65543, 5, 0, 65544, 5, 0, 65545, 5, 0, 65546, 5, 0, 65547, 5, 0, 65548, 5, 0, 65549, 5, 0, 65550, 5, 0, 65551, 5, 0, 65552, 5, 0, 65553, 5, 0, 65554, 5, 0, 65555, 5, 0, 65556, 5, 0, 65557, 5, 0, 65558, 5, 0, 65559, 5, 0, 65560, 5, 0, 65561, 5, 0, 65562, 5, 0, 65563, 5, 0, 65564, 6, 0, 131073, 12, 0, 131100, 14, 0, 196609, 12, 0, 196636, 14, 0, 262145, 12, 0, 262172, 14, 0, 327681, 12, 0, 327691, 12, 0, 327708, 14, 0, 393217, 12, 0, 393227, 12, 0, 393244, 14, 0, 458752, 19, 0, 458753, 12, 0, 458763, 12, 0, 458780, 14, 0, 458781, 19, 0, 524289, 12, 0, 524316, 14, 0, 589824, 5, 0, 589825, 12, 0, 589852, 14, 0, 589853, 5, 0, 655361, 12, 0, 655373, 5, 0, 655374, 5, 0, 655375, 5, 0, 655376, 5, 0, 655377, 5, 0, 655388, 14, 0, 720897, 12, 0, 720924, 14, 0, 786433, 12, 0, 786460, 14, 0, 851969, 12, 0, 851996, 14, 0, 917505, 18, 0, 917506, 19, 0, 917507, 19, 0, 917508, 19, 0, 917509, 19, 0, 917510, 19, 0, 917511, 19, 0, 917512, 19, 0, 917513, 19, 0, 917514, 19, 0, 917515, 19, 0, 917516, 19, 0, 917517, 19, 0, 917518, 19, 0, 917519, 19, 0, 917520, 19, 0, 917521, 19, 0, 917522, 19, 0, 917523, 19, 0, 917524, 19, 0, 917525, 19, 0, 917526, 19, 0, 917527, 19, 0, 917528, 19, 0, 917529, 19, 0, 917530, 19, 0, 917531, 19, 0, 917532, 20, 0, 983054, 14, 0, 983056, 12, 0 )
 
 [node name="Deko" type="TileMap" parent="."]
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="Asteroid" parent="." instance=ExtResource( 4 )]
-position = Vector2( 198.958, 127.571 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+current = true
 
-[node name="PlayerCharacter" parent="." instance=ExtResource( 5 )]
+[node name="PlayerCharacter" parent="." instance=ExtResource( 4 )]
 position = Vector2( 71.3197, 126.532 )
 
-[node name="TinyRobot" parent="." instance=ExtResource( 6 )]
-position = Vector2( 346.941, 132.767 )
+[node name="Blockade" parent="." instance=ExtResource( 5 )]
+position = Vector2( 354.494, 96.2769 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade"]
+shape = SubResource( 1 )
+
+[node name="Blockade2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 354.494, 96.2769 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade2"]
+position = Vector2( 22.1533, -50.8927 )
+shape = SubResource( 2 )
+
+[node name="Blockade3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 354.494, 96.2769 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade3"]
+position = Vector2( 16.7647, 50.294 )
+shape = SubResource( 3 )
+
+[node name="Blockade4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 354.494, 96.2769 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade4"]
+position = Vector2( 74.2435, -0.59874 )
+shape = SubResource( 4 )
+
+[node name="Asteroid" parent="Blockade4/CollisionShape2D" instance=ExtResource( 6 )]
+position = Vector2( -37.7205, -19.1596 )
+
+[node name="Robot" parent="." instance=ExtResource( 7 )]
+position = Vector2( 231.154, 112.443 )
+speed = 0
+debug = true
+
+[node name="TimyRobot" parent="." instance=ExtResource( 8 )]
+position = Vector2( 264.684, 139.985 )
+scale = Vector2( 1, 1 )
+speed = 0
+debug = true
+

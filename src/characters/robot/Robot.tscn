@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://characters/BaseEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/robot/Robot.gd" type="Script" id=2]
@@ -24,13 +24,19 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 7.81102
-height = 2.16798
+radius = 8.0
+height = 2.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 8.0
+height = 2.0
 
 [node name="Robot" instance=ExtResource( 1 )]
 position = Vector2( 27.4824, 15.9483 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 speed = 100
+detect_radius = 80
 has_detect_radius = true
 eye_rotation_speed = 4.0
 bullet = ExtResource( 3 )
@@ -48,6 +54,9 @@ region_rect = Rect2( 0, 0, 17, 26 )
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource( 2 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 3 )
+
 [node name="Eye" type="Sprite" parent="." index="4"]
 texture = ExtResource( 5 )
 
@@ -57,11 +66,13 @@ position = Vector2( 0, -2 )
 [node name="Position2D" type="Position2D" parent="EyeContainer" index="0"]
 position = Vector2( 2, 0 )
 
+[node name="DetectRadius" parent="." index="6"]
+collision_mask = 67
+
 [node name="DelayTimer" type="Timer" parent="." index="7"]
-wait_time = 0.25
+wait_time = 0.5
 one_shot = true
 
 [node name="DirectionChangeTimer" type="Timer" parent="." index="8"]
-
 [connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]
 [connection signal="timeout" from="DirectionChangeTimer" to="." method="_on_DirectionChangeTimer_timeout"]

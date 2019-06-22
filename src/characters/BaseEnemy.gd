@@ -15,7 +15,8 @@ func _ready():
 		$DetectRadius/CollisionShape2D.shape.radius = detect_radius
 
 func _on_DetectRadius_body_entered(body):
-	m_target = body
+	if body.is_in_group("player"):
+		m_target = body
 
 func _on_DetectRadius_body_exited(body):
 	if body == m_target:
