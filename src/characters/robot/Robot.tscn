@@ -27,7 +27,7 @@ tracks/0/keys = {
 radius = 7.81102
 height = 2.16798
 
-[node name="Robot" index="0" instance=ExtResource( 1 )]
+[node name="Robot" instance=ExtResource( 1 )]
 position = Vector2( 27.4824, 15.9483 )
 script = ExtResource( 2 )
 speed = 100

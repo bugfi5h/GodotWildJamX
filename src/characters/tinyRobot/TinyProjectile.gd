@@ -12,7 +12,7 @@ func _ready():
 	pass
 
 func start(_position, _direction):
-	position = _position
+	global_position = _position
 	rotation = _direction.angle()
 	velocity = _direction * speed
 	$Lifetime.wait_time = lifetime
