@@ -45,8 +45,8 @@ enum loading_states {
 
 var m_generator : Node2D = preload("res://test/Generator.gd").new()
 
-var m_starting_room : PackedScene = preload("res://map/rooms/StartRoom.tscn")
-var m_starting_room_pos : Vector2 = Vector2()
+var m_starting_room_packed : PackedScene = preload("res://map/rooms/StartRoom.tscn")
+var m_starting_room : Node2D = null
 var m_player : PackedScene = preload("res://characters/PlayerCharacter.tscn")
 var m_mega_glorb : PackedScene = preload("res://items/glorbs/MegaGlorb.tscn")
 var m_empty_space : PackedScene = preload("res://map/rooms/EmptySpace.tscn")
@@ -103,8 +103,8 @@ func _create_rooms(grid : Array) -> void:
 				for y in range(grid[x].size()):
 					match grid[x][y]:
 						m_generator.Room_Type.START:
-							m_starting_room_pos = Vector2(x*m_room_dimensions.x,y*m_room_dimensions.y)
-							_place_room(x, y, m_starting_room)
+							_place_room(x, y, m_starting_room_packed)
+							m_starting_room = m_room_grid[x][y]
 						m_generator.Room_Type.NORMAL:
 							_select_room_to_place(x, y, all_normal_weights, m_room_scenes)
 						m_generator.Room_Type.SECRET:
@@ -181,7 +181,7 @@ func _add_doors() -> void:
 
 func _spawn_player_and_mobs() -> void:
 	var player = m_player.instance()
-	player.position = m_starting_room_pos + (m_room_dimensions / 2)
+	player.position = m_starting_room.position + (m_room_dimensions / 2)
 	add_child(player)
 	for i in range(GameState.glorbs_to_find):
 		var x = randi()%x_room_count

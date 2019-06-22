@@ -39,4 +39,5 @@ position = Vector2( 71.3197, 126.532 )
 
 [node name="TinyRobot" parent="." instance=ExtResource( 6 )]
 position = Vector2( 346.941, 132.767 )
+
 [connection signal="shoot_projectile" from="TinyRobot" to="." method="_on_Robot_shoot_projectile"]

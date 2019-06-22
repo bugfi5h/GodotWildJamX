@@ -19,7 +19,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if target:
 		var target_dir = (target.global_position - global_position).normalized()
 		move_and_slide(target_dir * speed)
