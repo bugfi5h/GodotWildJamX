@@ -47,7 +47,7 @@ var m_generator : Node2D = preload("res://test/Generator.gd").new()
 
 var m_starting_room_packed : PackedScene = preload("res://map/rooms/StartRoom.tscn")
 var m_starting_room : Node2D = null
-var m_player : PackedScene = preload("res://characters/PlayerCharacter.tscn")
+var m_player : PackedScene = preload("res://characters/player/PlayerCharacter.tscn")
 var m_mega_glorb : PackedScene = preload("res://items/glorbs/MegaGlorb.tscn")
 var m_empty_space : PackedScene = preload("res://map/rooms/EmptySpace.tscn")
 

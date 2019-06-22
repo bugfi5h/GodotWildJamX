@@ -14,7 +14,7 @@ func _ready():
 	floorIds.append($Ground.tile_set.find_tile_by_name("Floor6"))
 	
 	enemies.append(load("res://characters/robot/Robot.tscn"))
-	enemies.append(load("res://characters/Asteroid.tscn"))
+	enemies.append(load("res://characters/asteroid/Asteroid.tscn"))
 	enemies.append(load("res://characters/tinyRobot/TinyRobot.tscn"))
 	
 	generate_deco(randi() % 12)

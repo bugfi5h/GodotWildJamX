@@ -14,7 +14,7 @@ func _ready() -> void:
 	$Hitbox/CollisionShape2D.disabled = true
 	$Sprite/damage/CollisionShape2D2.disabled = true
 	$InvincibleTimer.start()
-	m_packed_self = load("res://characters/Asteroid.tscn")
+	m_packed_self = load("res://characters/asteroid/Asteroid.tscn")
 	if should_generate_random_start_direction:
 		generate_random_start_direction()
 
