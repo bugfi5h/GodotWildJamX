@@ -460,7 +460,6 @@ collision_mask = 3
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Row4/VioletWall1/StaticBody2D"]
 position = Vector2( -0.200001, -0.200001 )
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 0.200001, 0.200001, 0.200001, 16.2, 4.2, 16.2, 4.2, 4.2, 16.2, 4.2, 16.2, 0.200001 )
 
 [node name="VioletWall2" type="Sprite" parent="Row4"]
@@ -1065,4 +1064,3 @@ collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Row15/OrangeWall8/StaticBody2D"]
 polygon = PoolVector2Array( 0, 12, 0, 16, 16, 16, 16, 0, 12, 0, 12, 12 )
-

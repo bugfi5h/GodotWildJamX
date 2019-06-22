@@ -9,4 +9,3 @@ color = Color( 1, 0, 0, 1 )
 
 [node name="Deco" parent="." index="4"]
 tile_set = null
-
