@@ -15,7 +15,6 @@ class_name SecretRoom
 
 
 func start_spawner(body):
-	print("spawner start")	
 	var children = get_children()
 	for child in children:
 		if "GlorbSpawner" in child.name:
@@ -26,6 +25,5 @@ func stop_spawner(body):
 	var children = get_children()
 	for child in children:
 		if "GlorbSpawner" in child.name:
-			print("stop")
 			child.stop()
 	pass
