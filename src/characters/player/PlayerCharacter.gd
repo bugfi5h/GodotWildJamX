@@ -1,13 +1,15 @@
 extends "res://characters/BaseCharacter.gd"
-
+class_name PlayerCharacter
 
 var m_velocity : Vector2
 var m_look_direction : Vector2 = Vector2(1,0)
 var m_is_attacking  : bool = false
 var m_parent : Node2D
 
-func _ready() -> void:
+func _init():
 	add_to_group("player")
+
+func _ready() -> void:
 	max_health = GameState.get_player_max_health()
 	current_health = GameState.get_player_health()
 	current_glorb_meter = GameState.get_player_glorb_meter()

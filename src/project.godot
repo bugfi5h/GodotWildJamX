@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Glorb",
 "language": "GDScript",
 "path": "res://items/glorbs/Glorb.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PlayerCharacter",
+"language": "GDScript",
+"path": "res://characters/player/PlayerCharacter.gd"
 } ]
 _global_script_class_icons={
 "AnimatedTextureRect": "",
 "Asteroid": "",
 "BaseRoom": "",
-"Glorb": ""
+"Glorb": "",
+"PlayerCharacter": ""
 }
 
 [application]
