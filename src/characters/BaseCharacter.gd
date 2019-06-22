@@ -33,6 +33,8 @@ func set_glitch_mode(on:bool) -> void:
 		$Hitbox.monitorable = true
 
 func change_health(change:int) -> void:
+	if change < 0:
+		$DamageAnimation.play("damage")
 	current_health = Helper.limit(0, max_health, current_health + change)
 	if current_health == 0:
 		die()

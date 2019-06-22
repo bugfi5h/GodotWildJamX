@@ -362,8 +362,9 @@ anims/walk_sideways = SubResource( 5 )
 anims/walk_up = SubResource( 6 )
 
 [node name="Sprite" parent="." index="1"]
-texture = ExtResource( 4 )
-hframes = 8
+texture = ExtResource( 5 )
+hframes = 2
+frame = 1
 
 [node name="PunchHit" type="Area2D" parent="Sprite" index="0"]
 collision_layer = 2
