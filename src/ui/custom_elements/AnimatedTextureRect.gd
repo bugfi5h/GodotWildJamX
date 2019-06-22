@@ -1,6 +1,6 @@
 tool
-extends Control
-class AnimatedTextureRect
+extends Control 
+class_name AnimatedTextureRect
 
 export var sprites : SpriteFrames = null setget set_sprites, get_sprites
 export(String) var animation = "default" setget set_animation

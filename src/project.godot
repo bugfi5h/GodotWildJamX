@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "AnimatedTextureRect",
+"language": "GDScript",
+"path": "res://ui/custom_elements/AnimatedTextureRect.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Asteroid",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://items/glorbs/Glorb.gd"
 } ]
 _global_script_class_icons={
+"AnimatedTextureRect": "",
 "Asteroid": "",
 "BaseRoom": "",
 "Glorb": ""
