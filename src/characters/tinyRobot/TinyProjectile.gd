@@ -35,7 +35,6 @@ func _on_Projectile_area_entered(area):
 
 
 func _on_TinyProjectile_body_entered(body):
-	print("wall")
 	if body is StaticBody2D:
 		impact()
 	pass # Replace with function body.
