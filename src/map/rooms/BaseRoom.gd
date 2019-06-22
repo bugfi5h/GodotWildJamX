@@ -1,6 +1,8 @@
 extends Node2D
 class_name BaseRoom
 
+signal player_entered_room
+
 export var has_door_left : bool = false
 export var has_door_right : bool = false
 export var has_door_top : bool = false
@@ -108,6 +110,8 @@ func _on_GlitchDetectionArea_body_entered(body):
 	if body.has_method("is_glitching"):
 		if body.is_glitching():
 			body.set_glitch_mode(false)
+	if body.is_in_group("player"):
+		emit_signal("player_entered_room", self)
 			
 func _on_enemy_shooting(bullet : PackedScene, _position : Vector2, _direction : Vector2):
 	var b = bullet.instance()
