@@ -1,7 +1,7 @@
 extends Node
 
-export var music_volume : float = 100
-export var sound_volume : float = 100
+export var music_volume : float = 50
+export var sound_volume : float = 50
 
 export var music_enabled : bool = true
 export var sound_enabled : bool = true

@@ -10,6 +10,9 @@ func _ready():
 	var gameSettings = get_node("/root/GameSettings")
 	GameSettings.connect("sound_volume_changed", self, "_on_sound_volume_changed")
 	GameSettings.connect("sound_volume_enable_changed", self, "_on_sound_volume_enable_changed")
+	
+	_on_sound_volume_changed(GameSettings.sound_volume)
+	_on_sound_volume_enable_changed(GameSettings.sound_enabled)
 
 func _on_sound_volume_changed(volume):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear2db(volume/100))
