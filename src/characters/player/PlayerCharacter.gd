@@ -88,6 +88,21 @@ func play_walk_animation() -> void:
 			$Sprite.scale.x = 1
 			$AnimationPlayer.play("walk_sideways")
 
+func play_attack_animation() -> void:
+	if !m_is_glitching:
+		if m_look_direction == Vector2(0,-1):
+			$Sprite.scale.x = 1
+			$AnimationPlayer.play("attack_up")
+		elif m_look_direction == Vector2(0,1):
+			$Sprite.scale.x = 1
+			$AnimationPlayer.play("attack_down")
+		elif m_look_direction == Vector2(-1,0):
+			$Sprite.scale.x = -1
+			$AnimationPlayer.play("attack_sideways")
+		elif m_look_direction == Vector2(1,0):
+			$Sprite.scale.x = 1
+			$AnimationPlayer.play("attack_sideways")
+
 func _process_normal_movement(delta):
 	m_velocity = Vector2()
 	var direction = Vector2()
@@ -108,7 +123,7 @@ func _process_normal_movement(delta):
 			$Sprite.scale.x = 1	
 		if Input.is_action_just_pressed("attack"):
 			m_is_attacking = true
-			$AnimationPlayer.play("attack")
+			play_attack_animation()
 			direction = Vector2()
 		if Input.is_action_pressed("glitch"):
 			if has_enough_glorb_meter(wall_glorb_cost):
@@ -145,5 +160,5 @@ func _on_PunchHit_area_entered(area) -> void:
 
 
 func _on_AnimationPlayer_animation_finished(anim_name) -> void:
-	if anim_name == "attack":
+	if anim_name == "attack_up" || anim_name == "attack_down" || anim_name == "attack_sideways":
 		m_is_attacking = false
