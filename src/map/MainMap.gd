@@ -61,7 +61,7 @@ var m_room_scenes : Array = [
 
 
 var m_secret_room_scenes : Array = [
-	{ "scene": load("res://map/rooms/TestRoom3.tscn"), "weight": 2 }
+	{ "scene": load("res://map/rooms/templates/SecretRoom.tscn"), "weight": 2 }
 ]
 
 
