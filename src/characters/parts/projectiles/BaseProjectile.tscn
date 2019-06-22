@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://characters/parts/projectiles/BaseProjectile.gd" type="Script" id=1]
+
+[node name="BaseProjectile" type="Area2D"]
+collision_layer = 32
+collision_mask = 3
+script = ExtResource( 1 )
+speed = 500
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_Laser_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Laser_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

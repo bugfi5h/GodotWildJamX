@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/MainUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ui/VolumeBar.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/ui/VolumeBarVolume.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/items/glorb-export3.png" type="Texture" id=4]
+[ext_resource path="res://ui/custom_elements/Minimap.tscn" type="PackedScene" id=5]
 
 [node name="MainUI" type="Control"]
 anchor_right = 1.0
@@ -17,6 +18,7 @@ rect_min_size = Vector2( 127, 39 )
 color = Color( 0.0901961, 0.0901961, 0.0901961, 0.576471 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 margin_bottom = 29.0
 
@@ -102,3 +104,14 @@ margin_right = 29.0
 margin_bottom = 25.0
 text = "0"
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 400.0
+margin_top = 180.0
+margin_right = 460.0
+margin_bottom = 240.0
+
+[node name="Minimap" parent="MarginContainer" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 60.0
+margin_bottom = 60.0

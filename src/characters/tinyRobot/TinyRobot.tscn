@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://characters/BaseCharacter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/BaseShootingEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/tinyRobot/TinyRobot.gd" type="Script" id=2]
-[ext_resource path="res://characters/tinyRobot/TinyProjectile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/parts/projectiles/TinyProjectile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/characters/tinyRobot/robot.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -49,15 +49,14 @@ tracks/0/keys = {
 radius = 50.0
 
 [node name="TinyRobot" instance=ExtResource( 1 )]
-scale = Vector2( 2, 2 )
-collision_layer = 4
 collision_mask = 3
 script = ExtResource( 2 )
 current_health = 2
 max_health = 2
 speed = 50
-PROJECTILE = ExtResource( 3 )
-PROJECTILE_COOLDOWN = 2.0
+detect_radius = 100
+has_detect_radius = true
+bullet = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 4 )
@@ -71,8 +70,6 @@ shape = SubResource( 1 )
 
 [node name="Hitbox" parent="." index="2"]
 position = Vector2( 0, 1 )
-collision_layer = 4
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 visible = false
@@ -86,30 +83,22 @@ anims/run = SubResource( 4 )
 
 [node name="ProjectileSpawn" type="Position2D" parent="." index="4"]
 
-[node name="ProjectileTimer" type="Timer" parent="." index="5"]
-wait_time = 2.0
-
-[node name="Vision" type="Area2D" parent="." index="6"]
-visible = false
-collision_layer = 4
+[node name="DetectRadius" parent="." index="5"]
 collision_mask = 67
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" index="0"]
-visible = false
-shape = SubResource( 5 )
-
-[node name="Minimum Distance" type="Area2D" parent="." index="7"]
+[node name="Minimum Distance" type="Area2D" parent="." index="6"]
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Minimum Distance" index="0"]
 shape = SubResource( 5 )
 
-[node name="ThinkTimer" type="Timer" parent="." index="8"]
+[node name="ThinkTimer" type="Timer" parent="." index="7"]
 wait_time = 5.0
 
-[connection signal="timeout" from="ProjectileTimer" to="." method="_on_ProjectileTimer_timeout"]
-[connection signal="body_entered" from="Vision" to="." method="_on_Vision_body_entered"]
+[node name="ProjectileTimer" parent="." index="9"]
+wait_time = 2.0
+
 [connection signal="body_entered" from="Minimum Distance" to="." method="_on_Minimum_Distance_body_entered"]
 [connection signal="body_exited" from="Minimum Distance" to="." method="_on_Minimum_Distance_body_exited"]
 [connection signal="timeout" from="ThinkTimer" to="." method="_on_ThinkTimer_timeout"]

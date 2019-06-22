@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var m_room_dimensions : Vector2 = Vector2()
 var m_room_grid : Array
 
@@ -19,8 +18,10 @@ signal glorbs_to_find_changed(value)
 func get_stage_dimensions() -> Vector2:
 	return m_room_dimensions * Vector2(x_room_count, y_room_count)
 
-func _ready():
+func _init():
 	add_to_group("main_map");
+
+func _ready():
 	m_glorbs_to_find = GameState.glorbs_to_find
 	emit_signal("glorb_count_changed", m_mega_glorbs)
 	emit_signal("glorbs_to_find_changed", m_glorbs_to_find)
@@ -47,7 +48,7 @@ var m_generator : Node2D = preload("res://test/Generator.gd").new()
 
 var m_starting_room_packed : PackedScene = preload("res://map/rooms/StartRoom.tscn")
 var m_starting_room : Node2D = null
-var m_player : PackedScene = preload("res://characters/PlayerCharacter.tscn")
+var m_player : PackedScene = preload("res://characters/player/PlayerCharacter.tscn")
 var m_mega_glorb : PackedScene = preload("res://items/glorbs/MegaGlorb.tscn")
 var m_empty_space : PackedScene = preload("res://map/rooms/EmptySpace.tscn")
 
@@ -198,6 +199,8 @@ func _spawn_player_and_mobs() -> void:
 	
 func disable_camera_smoothing_for_frame() -> void:
 	$MapCamera.disable_smoothing_for_frame()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func to_grid_position(pos : Vector2) -> Vector2:
+	var x = int(pos.x / m_room_dimensions.x)
+	var y = int(pos.y / m_room_dimensions.y)
+	return Vector2(x,y)
