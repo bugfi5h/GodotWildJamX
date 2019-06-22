@@ -9,7 +9,6 @@ var direction
 
 func _ready():
 	$AnimatedSprite.play("fly")
-	$Lifetime.start()
 	pass
 
 func start(_position, _direction):
@@ -17,6 +16,7 @@ func start(_position, _direction):
 	rotation = _direction.angle()
 	velocity = _direction * speed
 	$Lifetime.wait_time = lifetime
+	$Lifetime.start()
 
 func _process(delta):
 	position += velocity * delta
@@ -28,8 +28,14 @@ func _on_Lifetime_timeout():
 	impact()
 
 func _on_Projectile_area_entered(area):
-	print("hit")
 	if area.is_in_group("hitbox"):
 		area.take_damage(damage)
-	impact()	
+		impact()	
+	pass # Replace with function body.
+
+
+func _on_TinyProjectile_body_entered(body):
+	print("wall")
+	if body is StaticBody2D:
+		impact()
 	pass # Replace with function body.
