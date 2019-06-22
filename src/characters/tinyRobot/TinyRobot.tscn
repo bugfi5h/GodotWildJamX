@@ -91,18 +91,23 @@ wait_time = 2.0
 
 [node name="Vision" type="Area2D" parent="." index="6"]
 visible = false
+collision_layer = 4
+collision_mask = 67
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" index="0"]
 visible = false
 shape = SubResource( 5 )
 
 [node name="Minimum Distance" type="Area2D" parent="." index="7"]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Minimum Distance" index="0"]
 shape = SubResource( 5 )
 
 [node name="ThinkTimer" type="Timer" parent="." index="8"]
 wait_time = 5.0
+
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_ProjectileTimer_timeout"]
 [connection signal="body_entered" from="Vision" to="." method="_on_Vision_body_entered"]
 [connection signal="body_entered" from="Minimum Distance" to="." method="_on_Minimum_Distance_body_entered"]

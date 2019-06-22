@@ -26,13 +26,9 @@ func _get_new_direction() -> void:
 	m_velocity = Vector2(x, y).normalized()
 
 func _physics_process(delta) -> void:
+	#update() for debugging ray_cast
 	if m_target:
-		var target_dir = (m_target.global_position - global_position).normalized()
-		var current_dir = Vector2(1,0).rotated($EyeContainer.global_rotation)
-		$EyeContainer.global_rotation = current_dir.linear_interpolate(target_dir, eye_rotation_speed * delta).angle()
-		$Eye.global_position = $EyeContainer/Position2D.global_position
-		if target_dir.dot(current_dir) > 0.8:
-			_shoot()
+		_aim(delta)
 	_move(delta)
 
 func _move(delta) -> void:
@@ -40,14 +36,41 @@ func _move(delta) -> void:
 	if collision:
 		_get_new_direction()
 		$DirectionChangeTimer.start()
+
+var m_hit_pos : Array
+func _aim(delta) -> void:
+	m_hit_pos = []
+	var space_state = get_world_2d().direct_space_state
+	var target_radius = m_target.get_node('Hitbox/HitboxCollsion').shape.radius - 1
+	var target_height = m_target.get_node('Hitbox/HitboxCollsion').shape.height - 1
+	var n = m_target.position - Vector2(0,(target_height/2))
+	var s = m_target.position + Vector2(0,(target_height/2))
+	var e = m_target.position + Vector2(target_radius, 0)
+	var w = m_target.position - Vector2(target_radius, 0)
+	for pos in [m_target.position, n, e, s, w]:
+		var result = space_state.intersect_ray(position, pos, [self], $DetectRadius.collision_mask)
+		if result:
+			m_hit_pos.append(result.position)
+			if result.collider.name == "PlayerCharacter":	
+				var target_dir = (m_target.global_position - global_position).normalized()
+				var current_dir = Vector2(1,0).rotated($EyeContainer.global_rotation)
+				$EyeContainer.global_rotation = current_dir.linear_interpolate(target_dir, eye_rotation_speed * delta).angle()
+				$Eye.global_position = $EyeContainer/Position2D.global_position
+				if target_dir.dot(current_dir) > 0.8:
+					_shoot()
 			
 func _shoot() -> void:
 	if m_can_shoot:
 		m_can_shoot = false
 		$DelayTimer.start()
 		var dir = Vector2(1,0).rotated($EyeContainer.global_rotation)
-		emit_signal('shoot', bullet, $EyeContainer/Position2D.global_position, dir)
-		
+		emit_signal('shoot', bullet, $EyeContainer/Position2D.global_position, dir, damage)
+
+#func _draw() -> void: #for debugging ray_cast
+#	if m_target:
+#		for hit in m_hit_pos:
+#	        draw_line(Vector2(), (hit - position).rotated(-rotation), Color.red)
+#	        draw_circle((hit - position).rotated(-rotation), 5, Color.red)	
 
 func _on_DelayTimer_timeout() -> void:
 	m_can_shoot = true

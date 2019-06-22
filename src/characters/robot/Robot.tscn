@@ -66,10 +66,10 @@ position = Vector2( 0, -2 )
 position = Vector2( 2, 0 )
 
 [node name="DetectRadius" parent="." index="6"]
-collision_mask = 3
+collision_mask = 67
 
 [node name="DelayTimer" type="Timer" parent="." index="7"]
-wait_time = 0.25
+wait_time = 0.5
 one_shot = true
 
 [node name="DirectionChangeTimer" type="Timer" parent="." index="8"]

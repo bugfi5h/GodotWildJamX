@@ -27,7 +27,7 @@ func _physics_process(delta):
 	if target:
 		var target_dir = (target.global_position - global_position).normalized()
 		move_direction = target_dir
-		shoot(target_dir)
+		_aim(delta, target_dir)
 		if(target.global_position.x - global_position.x < 0):
 			$Sprite.flip_h = true
 		else:
@@ -57,8 +57,23 @@ func shoot(direction):
 		can_shoot = false
 		$ProjectileTimer.start()
 		var projectileSpawn = $ProjectileSpawn.global_position
-		emit_signal("shoot_projectile", PROJECTILE, projectileSpawn, direction)
+		emit_signal("shoot_projectile", PROJECTILE, projectileSpawn, direction, damage)
 	pass
+
+
+func _aim(delta, target_dir)->void:
+	var space_state = get_world_2d().direct_space_state
+	var target_radius = target.get_node('Hitbox/HitboxCollsion').shape.radius - 1
+	var target_height = target.get_node('Hitbox/HitboxCollsion').shape.height - 1
+	var n = target.position - Vector2(0,(target_height/2))
+	var s = target.position + Vector2(0,(target_height/2))
+	var e = target.position + Vector2(target_radius, 0)
+	var w = target.position - Vector2(target_radius, 0)
+	for pos in [target.position, n, e, s, w]:
+		var result = space_state.intersect_ray(position, pos, [self], $Vision.collision_mask)
+		if result and result.collider.name == "PlayerCharacter":
+			shoot(target_dir)
+
 
 func _on_ProjectileTimer_timeout():
 	can_shoot = true
