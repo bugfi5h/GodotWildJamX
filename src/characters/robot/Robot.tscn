@@ -33,6 +33,7 @@ height = 2.0
 
 [node name="Robot" instance=ExtResource( 1 )]
 position = Vector2( 27.4824, 15.9483 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 speed = 100
 detect_radius = 80
