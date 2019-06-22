@@ -16,7 +16,6 @@ func _physics_process(delta):
 	var distance = global_position.distance_to(m_player.global_position)
 	var speed_multiplier = (50 / pow(Helper.limit(5, 200, abs(distance)), 2)) * 100
 	speed_multiplier = Helper.limit(1, 10, speed_multiplier)
-	print(str(speed_multiplier))
 	translate(direction * speed * speed_multiplier * delta)
 
 func _on_Glorb_body_entered(body):
