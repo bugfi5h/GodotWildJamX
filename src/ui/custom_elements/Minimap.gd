@@ -1,6 +1,7 @@
 extends Control
 
 export var sprite : Texture = null
+export var active_sprite : Texture = null
 
 var m_player
 var m_room_grid : Array = []
@@ -51,13 +52,15 @@ func _on_player_entered_room(room):
 	set_current_room()
 
 func set_current_room() -> void:
-	if m_current_room != {}:
+	if !m_current_room.empty():
 		m_current_room["active"] = false
+		m_current_room["texture"].set_texture(sprite)
 		
 	var new_room_position = m_main_map.to_grid_position(get_player().position)
 	
 	var new_room : Dictionary = m_minimap_grid[new_room_position.x][new_room_position.y]
 	new_room["active"] = true
+	new_room["texture"].set_texture(active_sprite)
 	new_room["texture"].modulate = Color(1,1,1,1)
 	m_current_room = new_room
 		
