@@ -7,7 +7,6 @@ func _ready():
 	sceneLoader.connect("scene_changed", self, "_on_scene_changed")
 	connect_nodes(sceneLoader.m_current_scene)
 	
-	var gameSettings = get_node("/root/GameSettings")
 	GameSettings.connect("sound_volume_changed", self, "_on_sound_volume_changed")
 	GameSettings.connect("sound_volume_enable_changed", self, "_on_sound_volume_enable_changed")
 	
@@ -31,5 +30,4 @@ func connect_nodes(scene: Node):
 			child.connect("pressed", self, "_play_button_click")
 
 func _play_button_click():
-	
 	$ButtonClick.play()

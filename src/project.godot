@@ -44,9 +44,9 @@ config/icon="res://assets/images/icon.png"
 
 [autoload]
 
+GameSettings="*res://globals/GameSettings.gd"
 SceneLoader="*res://globals/SceneLoader.tscn"
 Helper="*res://globals/Helper.gd"
-GameSettings="*res://globals/GameSettings.gd"
 GameState="*res://globals/GameState.gd"
 SoundEffects="*res://globals/SoundEffects.tscn"
 Music="*res://globals/Music.tscn"

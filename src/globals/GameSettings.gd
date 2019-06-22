@@ -1,7 +1,7 @@
 extends Node
 
-export var music_volume : float = 50
-export var sound_volume : float = 50
+export var music_volume : float = 80
+export var sound_volume : float = 80
 
 export var music_enabled : bool = true
 export var sound_enabled : bool = true
@@ -10,6 +10,15 @@ signal music_volume_changed(value)
 signal sound_volume_changed(value)
 signal music_volume_enable_changed(enabled)
 signal sound_volume_enable_changed(enabled)
+
+var init : bool = false
+func initSounds():
+	if !init:
+		set_music_volume(40)
+		set_sound_volume(40)
+		set_sound_enabled(true)
+		set_music_enabled(true)
+		init = true
 
 func set_music_volume(value: float)-> void:
 	if value != music_volume:
