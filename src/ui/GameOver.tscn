@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/ui/GameOverBackground.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ui/buttons/ButtonBack.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ui/buttons/ButtonBackPressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ui/buttons/ButtonBackHover.png" type="Texture" id=5]
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+margin_right = 480.0
+margin_bottom = 256.0
+texture = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 480.0
+margin_bottom = 256.0
+
+[node name="LeftButtons" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 107.0
+margin_bottom = 256.0
+size_flags_horizontal = 2
+
+[node name="BtnQuit" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftButtons"]
+margin_top = 165.75
+margin_right = 107.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 107, 90.25 )
+size_flags_horizontal = 10
+size_flags_vertical = 10
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 350.0
+margin_right = 480.0
+margin_bottom = 256.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="Labels" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 120.0
+margin_bottom = 246.0
+custom_constants/separation = 20
+
+[node name="GameOver" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/Labels"]
+margin_right = 110.0
+margin_bottom = 14.0
+text = "Game Over"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/Labels"]
+margin_top = 34.0
+margin_right = 110.0
+margin_bottom = 48.0
+
+[node name="HighScoreLbl" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/Labels/HBoxContainer"]
+margin_right = 98.0
+margin_bottom = 14.0
+text = "Floors reached:"
+
+[node name="HighScore" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/Labels/HBoxContainer"]
+margin_left = 102.0
+margin_right = 110.0
+margin_bottom = 14.0
+text = "1"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftButtons/BtnQuit" to="." method="_on_BtnQuit_pressed"]

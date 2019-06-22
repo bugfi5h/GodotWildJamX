@@ -41,6 +41,7 @@ func change_glorb_meter(change:float) -> void:
 func die() -> void:
 	# GAME OVER
 	.die()
+	SceneLoader.goto_menu_scene("res://ui/GameOver.tscn")
 
 func _physics_process(delta) -> void:
 	._physics_process(delta)

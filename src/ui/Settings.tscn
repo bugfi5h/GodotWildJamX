@@ -152,6 +152,7 @@ custom_styles/grabber_area = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 scrollable = false
 ticks_on_borders = true
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnBack" to="." method="_on_BtnBack_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Musik/BtnMusic" to="." method="_on_BtnMusic_toggled"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Musik/NinePatchRect/Volume/MusikSlider" to="." method="_on_MusikSlider_value_changed"]
