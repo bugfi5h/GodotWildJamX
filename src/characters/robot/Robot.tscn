@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://characters/BaseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/BaseShootingEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/robot/Robot.gd" type="Script" id=2]
 [ext_resource path="res://characters/robot/Laser.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/characters/robot/robot.png" type="Texture" id=4]
@@ -37,8 +37,8 @@ script = ExtResource( 2 )
 speed = 100
 detect_radius = 80
 has_detect_radius = true
-eye_rotation_speed = 4.0
 bullet = ExtResource( 3 )
+eye_rotation_speed = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 autoplay = "idle"
@@ -68,11 +68,6 @@ position = Vector2( 2, 0 )
 [node name="DetectRadius" parent="." index="6"]
 collision_mask = 67
 
-[node name="DelayTimer" type="Timer" parent="." index="7"]
-wait_time = 0.5
-one_shot = true
+[node name="DirectionChangeTimer" type="Timer" parent="." index="7"]
 
-[node name="DirectionChangeTimer" type="Timer" parent="." index="8"]
-
-[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]
 [connection signal="timeout" from="DirectionChangeTimer" to="." method="_on_DirectionChangeTimer_timeout"]
