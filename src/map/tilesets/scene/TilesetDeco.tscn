@@ -1,0 +1,174 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/map/deco.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Deco" type="Node2D"]
+
+[node name="deco" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco/StaticBody2D"]
+position = Vector2( 7.78013, 7.89006 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 1 )
+
+[node name="deco2" type="Sprite" parent="."]
+position = Vector2( 0, 20 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco2/StaticBody2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 1 )
+
+[node name="deco4" type="Sprite" parent="."]
+position = Vector2( 20, 20 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco4/StaticBody2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 1 )
+
+[node name="deco5" type="Sprite" parent="."]
+position = Vector2( 20, -0.109938 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco5/StaticBody2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 1 )
+
+[node name="deco7" type="Sprite" parent="."]
+position = Vector2( 39.7801, 40 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco7/StaticBody2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 1 )
+
+[node name="deco9" type="Sprite" parent="."]
+position = Vector2( 79.7801, 40 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco9/StaticBody2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 1 )
+
+[node name="deco10" type="Sprite" parent="."]
+position = Vector2( 99.7801, 40 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco10/StaticBody2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 1 )
+
+[node name="deco8" type="Sprite" parent="."]
+position = Vector2( 60, 39.8901 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 48, 32, 16, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco8/StaticBody2D"]
+position = Vector2( 8, 14 )
+scale = Vector2( 0.8, 1.2 )
+shape = SubResource( 1 )
+
+[node name="deco6" type="Sprite" parent="."]
+position = Vector2( 0, 40 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco6"]
+scale = Vector2( 2, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco6/StaticBody2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 1 )
+
+[node name="deco3" type="Sprite" parent="."]
+position = Vector2( 40, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="deco3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deco3/StaticBody2D"]
+position = Vector2( 16, 16 )
+scale = Vector2( 1.6, 1.6 )
+shape = SubResource( 1 )
