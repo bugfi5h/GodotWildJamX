@@ -23,13 +23,6 @@ var m_wall_no_door_tiles : Dictionary = {
 	Helper.direction.BOTTOM:[Vector2(14,14), Vector2(15,14), Vector2(14,15), Vector2(15,15)],
 }
 
-var m_wall_door_tiles : Dictionary = {
-	Helper.direction.LEFT: 	[Vector2(0,6), Vector2(0,9)],
-	Helper.direction.RIGHT:	[Vector2(29,6), Vector2(29,9)],
-	Helper.direction.TOP:	[Vector2(13,0), Vector2(16,0)],
-	Helper.direction.BOTTOM:[Vector2(13,15), Vector2(16,15)],
-}
-
 var m_neighbours : Dictionary
 
 onready var m_parent = get_parent()
@@ -94,9 +87,6 @@ func set_door_tiles(direction : int, has_door : bool) -> void:
 		for pos in tiles_to_remove:
 			$Walls.set_cell(pos.x, pos.y, -1)
 	else:
-		var wall_tiles_to_remove = m_wall_door_tiles[direction]
-		for pos in wall_tiles_to_remove:
-			$Walls.set_cell(pos.x, pos.y, -1)
 		var floor_tiles_to_remove = m_floor_door_tiles[direction]
 		for pos in floor_tiles_to_remove:
 			$Ground.set_cell(pos.x, pos.y, -1)
