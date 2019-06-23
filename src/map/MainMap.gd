@@ -54,8 +54,6 @@ var m_empty_space : PackedScene = preload("res://map/rooms/EmptySpace.tscn")
 
 var m_room_scenes : Array = [
 	# hier neue Räume reinpacken: { scene: <path_to_scene>, weight: 5 }
-	{ "scene": load("res://map/rooms/TestRoom1.tscn"), "weight": 2 },
-	{ "scene": load("res://map/rooms/TestRoom2.tscn"), "weight": 2 },
 	{ "scene": load("res://map/rooms/RandomRoom.tscn"), "weight": 10 }
 ]
 
