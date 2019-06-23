@@ -56,7 +56,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="WallsAreItchy"
+config/name="GlitchyGlorb"
 run/main_scene="res://ui/MainMenue.tscn"
 config/icon="res://assets/images/icon.png"
 
